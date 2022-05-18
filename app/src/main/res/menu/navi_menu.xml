@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/navigation_mypage"
+            android:title = "@string/title_mypage"/>
+
+        <item android:id="@+id/navigation_music"
+            android:title = "@string/title_music"/>
+
+        <item android:id="@+id/navigation_meditation"
+            android:title = "@string/title_meditation"/>
+
+        <item android:id="@+id/navigation_room"
+            android:title = "@string/title_room"/>
+
+        <item android:id="@+id/navigation_askhelp"
+            android:title = "@string/title_askhelp"/>
+    </group>
+
+</menu>

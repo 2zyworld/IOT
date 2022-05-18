@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.myapplication.bottom.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_calender"
+        android:name="com.example.myapplication.bottom.calender.CalenderFragment"
+        android:label="@string/title_calender"
+        tools:layout="@layout/fragment_calender" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.example.myapplication.bottom.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting"/>
+    <fragment
+        android:id="@+id/navigation_dairy"
+        android:name="com.example.myapplication.bottom.dairy.DairyFragment"
+        android:label="@string/title_dairy"
+        tools:layout="@layout/fragment_dairy" />
+    <fragment
+        android:id="@+id/navigation_graph"
+        android:name="com.example.myapplication.bottom.graph.GraphFragment"
+        android:label="@string/title_graph"
+        tools:layout="@layout/fragment_graph" />
+    <fragment
+        android:id="@+id/navigation_music"
+        android:name="com.example.myapplication.drawer.music.MusicFragment"
+        android:label="@string/title_music"
+        tools:layout="@layout/fragment_music" />
+    <fragment
+        android:id="@+id/navigation_askhelp"
+        android:name="com.example.myapplication.drawer.askhelp.AskHelpFragment"
+        android:label="@string/title_askhelp"
+        tools:layout="@layout/fragment_askhelp" />
+    <fragment
+        android:id="@+id/navigation_meditation"
+        android:name="com.example.myapplication.drawer.meditation.MeditationFragment"
+        android:label="@string/title_meditation"
+        tools:layout="@layout/fragment_meditation" />
+    <fragment
+        android:id="@+id/navigation_room"
+        android:name="com.example.myapplication.drawer.room.RoomFragment"
+        android:label="@string/title_room"
+        tools:layout="@layout/fragment_room" />
+
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.example.myapplication.drawer.Mypage.MypageFragment"
+        android:label="@string/title_mypage"
+        tools:layout="@layout/fragment_mypage" />
+
+</navigation>
