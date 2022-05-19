@@ -21,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity2 : AppCompatActivity() {
 
     lateinit var btnRegister: TextView
+    var login_state = ""
 
     var login: Login? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +36,20 @@ class MainActivity2 : AppCompatActivity() {
         var loginService: LoginService = retrofit.create(LoginService::class.java)
 
 
-        button.setOnClickListener{
+        button.setOnClickListener {
             var text1 = registerid.text.toString()
             var text2 = registerpw1.text.toString()
 
-            loginService.requestLogin(text1,text2).enqueue(object: Callback<Login>{
+            fun Loginstate(login_state : String) {
+                if (login_state == "0000") {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+
+                    this.login_state = ""
+                }
+            }
+
+            loginService.requestLogin(text1, text2).enqueue(object : Callback<Login> {
                 override fun onFailure(call: Call<Login>, t: Throwable) {
                     Log.e("LOGIN", t.message.toString())
                     var dialog = AlertDialog.Builder(this@MainActivity2)
@@ -50,24 +60,28 @@ class MainActivity2 : AppCompatActivity() {
 
                 override fun onResponse(call: Call<Login>, response: Response<Login>) {
                     login = response.body()
-                    Log.d("LOGIN","msg : "+login?.msg)
-                    Log.d("LOGIN","code : "+login?.code)
-
-
-//                    var dialog = AlertDialog.Builder(this@MainActivity2)
+                    Log.d("LOGIN", "msg : " + login?.msg)
+                    Log.d("LOGIN", "code : " + login?.code)
+                    var dialog = AlertDialog.Builder(this@MainActivity2)
 //                    dialog.setTitle(login?.msg)
 //                    dialog.setMessage(login?.code)
 //                    dialog.show()
 
-                    if( login?.code == "0000") {
 
-                    }
+
+                    login_state = login?.code.toString()
+                    Loginstate(login_state)
+
                 }
+
             })
+            Log.d("LOGIN_STATE",login?.code.toString())
+
+
         }
 
         btnRegister.setOnClickListener {
-            Intent(this, Register::class.java).run{
+            Intent(this, Register::class.java).run {
                 startActivity(this)
             }
         }
