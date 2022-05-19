@@ -52,13 +52,14 @@ class MainActivity2 : AppCompatActivity() {
                     login = response.body()
                     Log.d("LOGIN","msg : "+login?.msg)
                     Log.d("LOGIN","code : "+login?.code)
-                    var dialog = AlertDialog.Builder(this@MainActivity2)
-                    dialog.setTitle(login?.msg)
-                    dialog.setMessage(login?.code)
-                    dialog.show()
+
+
+//                    var dialog = AlertDialog.Builder(this@MainActivity2)
+//                    dialog.setTitle(login?.msg)
+//                    dialog.setMessage(login?.code)
+//                    dialog.show()
 
                     if( login?.code == "0000") {
-
 
                     }
                 }
