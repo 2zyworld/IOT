@@ -25,7 +25,7 @@ class MainActivity2 : AppCompatActivity() {
     var login: Login? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main2)
         btnRegister = findViewById(R.id.btnRegister)
 
         var retrofit = Retrofit.Builder()
