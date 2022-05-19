@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.FragmentSettingBinding
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.text.SimpleDateFormat
 
 
 class SettingFragment : Fragment() {
@@ -28,10 +30,11 @@ class SettingFragment : Fragment() {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.settings
-        SettingViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
+//        val textView: TextView = binding.settings
+//        SettingViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

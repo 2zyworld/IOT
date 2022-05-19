@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class DairyViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is diary Fragment"
+        value = "일기작성 페이지"
     }
     val text: LiveData<String> = _text
 }

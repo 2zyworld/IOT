@@ -10,6 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="16dp"
         android:layout_marginTop="24dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,12 +27,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/home_qustion"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="50dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="10dp">
+            android:layout_margin="16dp"
+            app:cardCornerRadius="50dp">
 
             <TextView
                 android:id="@+id/textView3"
@@ -55,19 +55,15 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="16sp" />
 
-        <androidx.cardview.widget.CardView
+        <CalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="50dp"
-            app:cardElevation="10dp">
+            android:minDate="01/01/2022"
+            android:maxDate="12/31/2100"
 
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp" />
-        </androidx.cardview.widget.CardView>
+            android:layout_margin="8dp"
+            />
 
     </LinearLayout>
 
