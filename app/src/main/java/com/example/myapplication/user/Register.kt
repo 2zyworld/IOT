@@ -1,10 +1,13 @@
 package com.example.myapplication.user
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import com.example.myapplication.MainActivity
+import com.example.myapplication.MainActivity2
 import com.example.myapplication.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +27,8 @@ class Register : AppCompatActivity() {
 
     lateinit var button: Button
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -35,6 +40,8 @@ class Register : AppCompatActivity() {
 
 
         button = findViewById(R.id.button)
+
+
 
         var retrofit = Retrofit.Builder()
             .baseUrl("http://13.215.200.30:8000/")
@@ -50,6 +57,18 @@ class Register : AppCompatActivity() {
             val nameStr = name.text.toString()
 
 
+
+            fun signupstate(signup_state : String) {
+                if (signup_state == "0000") {
+                    val intent = Intent(this, MainActivity2::class.java)
+                    startActivity(intent)
+
+
+                }
+
+            }
+
+
             val user = User(nameStr, pwStr1, pwStr2, emailStr )
 
             signupservice.register(user).enqueue(object: Callback<Login>
@@ -59,16 +78,21 @@ class Register : AppCompatActivity() {
                         val result = response.body()
                         Log.d("회원가입", "${response}")
                         Log.d("회원가입", "${result}")
+                        signupstate(signup_state = "0000")
                     } else {
                         Log.d("회원가입 에러 ", "${response.errorBody()!!.string()}")
                     }
                 }
 
                 override fun onFailure(call: Call<Login>, t: Throwable) {
-                    Log.e("로그인", "${t.localizedMessage}")
+                    Log.e("회원가임", "${t.localizedMessage}")
                 }
+
+
             })
             }
+
+
 
         }
     }
