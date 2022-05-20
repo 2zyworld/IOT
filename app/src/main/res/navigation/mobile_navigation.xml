@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.example.myapplication.bottom.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_dairyDetailFragment"
+            app:destination="@id/dairyDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dairy"
+            app:destination="@id/navigation_dairy" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_calender"
@@ -26,7 +33,11 @@
         android:id="@+id/navigation_dairy"
         android:name="com.example.myapplication.bottom.dairy.DairyFragment"
         android:label="@string/title_dairy"
-        tools:layout="@layout/fragment_dairy" />
+        tools:layout="@layout/fragment_dairy" >
+        <action
+            android:id="@+id/action_navigation_dairy_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_graph"
         android:name="com.example.myapplication.bottom.graph.GraphFragment"
@@ -58,5 +69,18 @@
         android:name="com.example.myapplication.drawer.Mypage.MypageFragment"
         android:label="@string/title_mypage"
         tools:layout="@layout/fragment_mypage" />
+    <fragment
+        android:id="@+id/dairyDetailFragment"
+        android:name="com.example.myapplication.bottom.dairy.DairyDetailFragment"
+        android:label="fragment_dairy_detail"
+        tools:layout="@layout/fragment_dairy_detail" >
+        <action
+            android:id="@+id/action_dairyDetailFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/dairyListFragment"
+        android:name="com.example.myapplication.bottom.dairy.DairyListFragment"
+        android:label="DairyListFragment" />
 
 </navigation>
