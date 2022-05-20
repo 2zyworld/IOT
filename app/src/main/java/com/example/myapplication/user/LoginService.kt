@@ -13,7 +13,7 @@ interface LoginService{
     @FormUrlEncoded
     @POST("/app_login/")
     fun requestLogin(
-        @Field("username") email:String,
+        @Field("username") username:String,
         @Field("password") password:String
     ) : retrofit2.Call<Login>
 
