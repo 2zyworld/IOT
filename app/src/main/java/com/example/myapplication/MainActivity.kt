@@ -1,11 +1,8 @@
 package com.example.myapplication
 
+import android.Manifest
 import android.os.Bundle
-import android.system.Os.access
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -17,18 +14,35 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
+import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
 import kotlinx.android.synthetic.main.activity_main.*
+
+
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var permissionChecker: PermissionChecker
+
+
 
     var mBackWait:Long = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val permissions = arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO
+        )
+        permissionChecker = PermissionChecker(this, permissions)
+        if (permissionChecker.check()) {
+            // 초기화
+
+        }
+
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -65,6 +79,25 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray) {
+        super.onRequestPermissionsResult(
+            requestCode, permissions, grantResults
+        )
+
+        if (permissionChecker.checkGranted(
+                requestCode, permissions, grantResults
+            )
+        ) {
+
+
+        } else {
+            // 권한 획득 실패
+
+        }
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
@@ -95,7 +128,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     override fun onBackPressed() {
         // 뒤로가기 버튼 클릭
-        if(System.currentTimeMillis() - mBackWait >=2000 ) {
+        if (System.currentTimeMillis() - mBackWait >= 2000) {
             mBackWait = System.currentTimeMillis()
             Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG).show()
         } else {
@@ -104,7 +137,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             System.exit(0) //액티비티 종료
 
         }
+
     }
+
 
 
 

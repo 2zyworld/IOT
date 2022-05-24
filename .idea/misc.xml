@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/memo_border.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/red_edittext.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/white_edittext.xml" value="0.126" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21333333333333335" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.11458333333333333" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11458333333333333" />
@@ -12,7 +15,7 @@
         <entry key="app/src/main/res/layout/diary_detail.xml" value="0.25769927536231885" />
         <entry key="app/src/main/res/layout/fragment_askhelp.xml" value="0.11423505572441743" />
         <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.25815217391304346" />
-        <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_dairy_detail.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/fragment_dairy_history.xml" value="0.25769927536231885" />
         <entry key="app/src/main/res/layout/fragment_dairy_list.xml" value="0.24947916666666667" />
