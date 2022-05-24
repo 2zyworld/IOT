@@ -7,39 +7,57 @@
     android:fadeScrollbars="true"
     tools:context=".bottom.dairy.DairyFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/diary_post"
+        android:layout_width="322dp"
+        android:layout_height="314dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/memo_border"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.018" />
 
-        <Button
-            android:id="@+id/save_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save" />
+    <ImageView
+        android:id="@+id/mic_button"
+        android:layout_width="110dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/mic_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_post"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/diary_post"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/memo_border"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:textSize="15sp" />
+    <Button
+        android:id="@+id/post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_post"
+        app:layout_constraintVertical_bias="0.068" />
 
-        <Button
-            android:id="@+id/post_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Post" />
-
-        <ImageView
-            android:id="@+id/mic_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/mic_icon" />
-    </ScrollView>
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_post"
+        app:layout_constraintVertical_bias="0.068" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
