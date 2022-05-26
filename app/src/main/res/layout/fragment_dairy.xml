@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadeScrollbars="true"
+    android:background="@drawable/memo_border"
+    android:overScrollMode="always"
+
     tools:context=".bottom.dairy.DairyFragment">
 
     <EditText
         android:id="@+id/diary_post"
         android:layout_width="322dp"
-        android:layout_height="314dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/memo_border"
         android:ems="10"
         android:gravity="start|top"
@@ -19,15 +21,16 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/mic_button"
         android:layout_width="110dp"
         android:layout_height="108dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:src="@drawable/mic_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,24 +43,33 @@
         android:id="@+id/post_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diary_post"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/save_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/diary_title"
+        android:layout_width="322dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/memo_border"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="  Title"
+        android:inputType="textMultiLine"
+        android:paddingTop="10dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/diary_post"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diary_post"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

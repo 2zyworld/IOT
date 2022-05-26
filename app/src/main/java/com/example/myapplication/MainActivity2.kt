@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.bottom.dairy.dairy_post.UserName
 import com.example.myapplication.user.Login
 import com.example.myapplication.user.LoginService
 import com.example.myapplication.user.Register
@@ -42,12 +43,14 @@ class MainActivity2 : AppCompatActivity() {
             var text1 = registerid.text.toString()
             var text2 = registerpw1.text.toString()
 
+
             fun Loginstate(login_state : String) {
                 if (login_state == "0000") {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
                     this.login_state = ""
+                    UserName.username = text1
                 }
             }
 
@@ -84,6 +87,9 @@ class MainActivity2 : AppCompatActivity() {
 //                    dialog.setTitle(login?.msg)
 //                    dialog.setMessage(login?.code)
 //                    dialog.show()
+
+                    dialog.setMessage("${login?.msg}")
+                    dialog.show()
 
 
 
