@@ -203,12 +203,14 @@ class DairyFragment : Fragment() {
                 }
             })
 
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeFragment())
-                .commit()
 
 
-
+            binding.diaryPost.setText("")
+            binding.diaryTitle.setText("")
+            state = 2
+            if (state == 2){
+                state = 0
+            }
 
         }
 
