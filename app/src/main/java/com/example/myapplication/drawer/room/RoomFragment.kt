@@ -40,10 +40,10 @@ class RoomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.button4.setOnClickListener {
+        binding.lightpageButton.setOnClickListener {
             findNavController().navigate(R.id.lightFragment)
         }
-        binding.button5.setOnClickListener {
+        binding.humidifierpageButton.setOnClickListener {
             findNavController().navigate(R.id.humidifierFragment)
         }
 

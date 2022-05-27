@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.Manifest
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -107,11 +108,11 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        val menuInflater = menuInflater
+//        menuInflater.inflate(R.menu.menu, menu)
+//        return true
+//    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -137,7 +138,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         when(item.itemId)
         {
 
-            R.id.action_search -> {return super.onOptionsItemSelected(item)}
+//            R.id.action_search -> {return super.onOptionsItemSelected(item)}
             R.id.navigation_mypage -> Toast.makeText(applicationContext, "mypage", Toast.LENGTH_SHORT).show()
             R.id.navigation_music -> Toast.makeText(applicationContext, "노래듣기", Toast.LENGTH_SHORT).show()
             R.id.navigation_meditation -> Toast.makeText(applicationContext, "명상", Toast.LENGTH_SHORT).show()
