@@ -52,7 +52,11 @@
         android:id="@+id/navigation_askhelp"
         android:name="com.example.myapplication.drawer.askhelp.AskHelpFragment"
         android:label="@string/title_askhelp"
-        tools:layout="@layout/fragment_askhelp" />
+        tools:layout="@layout/fragment_askhelp" >
+        <action
+            android:id="@+id/action_navigation_askhelp_to_askHelpMapFragment"
+            app:destination="@id/askHelpMapFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_meditation"
         android:name="com.example.myapplication.drawer.meditation.MeditationFragment"
@@ -62,7 +66,14 @@
         android:id="@+id/navigation_room"
         android:name="com.example.myapplication.drawer.room.RoomFragment"
         android:label="@string/title_room"
-        tools:layout="@layout/fragment_room" />
+        tools:layout="@layout/fragment_room" >
+        <action
+            android:id="@+id/action_navigation_room_to_humidifierFragment"
+            app:destination="@id/humidifierFragment" />
+        <action
+            android:id="@+id/action_navigation_room_to_lightFragment"
+            app:destination="@id/lightFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_mypage"
@@ -82,5 +93,32 @@
         android:id="@+id/dairyListFragment"
         android:name="com.example.myapplication.bottom.dairy.DairyListFragment"
         android:label="DairyListFragment" />
+    <fragment
+        android:id="@+id/askHelpMapFragment"
+        android:name="com.example.myapplication.drawer.askhelp.AskHelpMapFragment"
+        android:label="fragment_askhelpmap"
+        tools:layout="@layout/fragment_askhelpmap" >
+        <action
+            android:id="@+id/action_askHelpMapFragment_to_navigation_askhelp"
+            app:destination="@id/navigation_askhelp" />
+    </fragment>
+    <fragment
+        android:id="@+id/humidifierFragment"
+        android:name="com.example.myapplication.drawer.room.HumidifierFragment"
+        android:label="fragment_humidifier"
+        tools:layout="@layout/fragment_humidifier" >
+        <action
+            android:id="@+id/action_humidifierFragment_to_navigation_room"
+            app:destination="@id/navigation_room" />
+    </fragment>
+    <fragment
+        android:id="@+id/lightFragment"
+        android:name="com.example.myapplication.drawer.room.LightFragment"
+        android:label="fragment_light"
+        tools:layout="@layout/fragment_light" >
+        <action
+            android:id="@+id/action_lightFragment_to_navigation_room"
+            app:destination="@id/navigation_room" />
+    </fragment>
 
 </navigation>

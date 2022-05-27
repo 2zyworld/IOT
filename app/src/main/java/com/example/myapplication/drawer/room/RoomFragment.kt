@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRoomBinding
 
 
@@ -22,21 +22,30 @@ class RoomFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val RoomViewModel =
-            ViewModelProvider(this).get(RoomViewModel::class.java)
+
 
         _binding = FragmentRoomBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.room
-        RoomViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.button4.setOnClickListener {
+            findNavController().navigate(R.id.lightFragment)
+        }
+        binding.button5.setOnClickListener {
+            findNavController().navigate(R.id.humidifierFragment)
+        }
+
+
     }
 }

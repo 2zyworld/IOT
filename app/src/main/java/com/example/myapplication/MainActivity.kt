@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.Manifest
 import android.os.Bundle
 import android.system.Os.access
 import android.view.Menu
@@ -7,18 +8,29 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Transformations.map
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
+
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_contents.*
+import kotlinx.coroutines.NonCancellable.start
+import java.nio.file.Files.find
+
+lateinit var locationPermission: ActivityResultLauncher<Array<String>>
+
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
@@ -27,13 +39,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     var mBackWait:Long = 0
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.mainContents.toolbar)
+        setSupportActionBar(binding.mainContents.toolbarv)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
@@ -63,12 +76,36 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
        naviView.setupWithNavController(navController)
        navbottomView.setupWithNavController(navController)
 
+        locationPermission = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()) { results ->
+            if(results.all{ it.value }) {
+                start()
+            } else {
+                Toast.makeText(this,
+                    "권한 승인이 필요합니다.",
+                    Toast.LENGTH_LONG).show()
+            }
+        }
+        locationPermission.launch(
+            arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+        )
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
     }
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
+
+            R.id.action_search -> {return super.onOptionsItemSelected(item)}
             R.id.navigation_mypage -> Toast.makeText(applicationContext, "mypage", Toast.LENGTH_SHORT).show()
             R.id.navigation_music -> Toast.makeText(applicationContext, "노래듣기", Toast.LENGTH_SHORT).show()
             R.id.navigation_meditation -> Toast.makeText(applicationContext, "명상", Toast.LENGTH_SHORT).show()
@@ -80,10 +117,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-           R.id.navi_view->{ // 메뉴 버튼
-                layout_drawer.openDrawer(GravityCompat.START)    // 네비게이션 드로어 열기
-            }
+           R.id.navi_view->{
+                layout_drawer.openDrawer(GravityCompat.START) }
+//        R.id.home -> {
+//                   finish()
+//                   return true
+//            }
         }
+
         return super.onOptionsItemSelected(item)
     }
 

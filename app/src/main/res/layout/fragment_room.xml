@@ -6,13 +6,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".drawer.room.RoomFragment">
 
-    <TextView
-        android:id="@+id/room"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="150dp"
+            android:layout_height="155dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="조명"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="150dp"
+            android:layout_height="155dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="가습기"
+            app:cornerRadius="100dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
