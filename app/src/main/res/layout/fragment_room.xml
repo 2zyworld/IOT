@@ -7,31 +7,35 @@
     android:background="@color/white"
     tools:context=".drawer.room.RoomFragment">
 
-    <Button
-        android:id="@+id/Humidifier_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Humidifier"
-        android:textAllCaps="false"
-        app:icon="@drawable/humidifier"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/Light_button"
-        android:layout_width="199dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="460dp"
-        android:text="Light"
-        app:icon="@drawable/light"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="150dp"
+            android:layout_height="155dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="조명"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="150dp"
+            android:layout_height="155dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="가습기"
+            app:cornerRadius="100dp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

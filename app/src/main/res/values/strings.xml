@@ -10,5 +10,10 @@
     <string name="title_room">나의방</string>
     <string name="title_meditation">명상하기</string>
     <string name="title_askhelp">도움요청</string>
+    <string name="title_logout">로그아웃</string>
+    <string name="action_favorite">search</string>
+    <string name="nav_header_desc">header_desc</string>
+    <string name="nav_header_title">header_title</string>
+    <string name="nav_header_subtitle">header_subtitle</string>
 
 </resources>

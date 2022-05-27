@@ -11,7 +11,6 @@
     tools:openDrawer="start">
 
 
-
     <include
         android:id="@+id/main_contents"
         layout="@layout/main_contents"
@@ -25,6 +24,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/navi_menu" />
     <FrameLayout
         android:layout_width="0dp"
@@ -34,29 +34,6 @@
 </FrameLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
-<!--    <include-->
-<!--        android:id="@+id/app_bar_main"-->
-<!--        layout="@layout/app_bar_main"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/btn_nav"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/ic_baseline_menu_24" />-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
 
 
 

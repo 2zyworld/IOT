@@ -6,6 +6,9 @@
         <item android:id="@+id/navigation_mypage"
             android:title = "@string/title_mypage"/>
 
+        <item android:id="@+id/navigation_askhelp"
+            android:title = "@string/title_askhelp"/>
+
         <item android:id="@+id/navigation_music"
             android:title = "@string/title_music"/>
 
@@ -15,8 +18,8 @@
         <item android:id="@+id/navigation_room"
             android:title = "@string/title_room"/>
 
-        <item android:id="@+id/navigation_askhelp"
-            android:title = "@string/title_askhelp"/>
+
+
     </group>
 
 </menu>
