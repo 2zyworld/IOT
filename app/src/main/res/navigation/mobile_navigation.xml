@@ -144,6 +144,13 @@
         <action
             android:id="@+id/action_askHelpMainFragment_to_navigation_askhelp"
             app:destination="@id/navigation_askhelp" />
+        <action
+            android:id="@+id/action_askHelpMainFragment_to_askHelpTestFragment"
+            app:destination="@id/askHelpTestFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/askHelpTestFragment"
+        android:name="com.example.myapplication.drawer.askhelp.AskHelpTestFragment"
+        android:label="AskHelpTestFragment" />
 
 </navigation>
