@@ -6,13 +6,13 @@
         <item android:id="@+id/navigation_mypage"
             android:title = "@string/title_mypage"/>
 
-        <item android:id="@+id/navigation_askhelp"
+        <item android:id="@+id/askHelpMainFragment"
             android:title = "@string/title_askhelp"/>
 
-        <item android:id="@+id/navigation_music"
+        <item android:id="@+id/musicFragment"
             android:title = "@string/title_music"/>
 
-        <item android:id="@+id/navigation_meditation"
+        <item android:id="@+id/meditationFragment"
             android:title = "@string/title_meditation"/>
 
         <item android:id="@+id/navigation_room"

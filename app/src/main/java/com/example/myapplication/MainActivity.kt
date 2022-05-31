@@ -10,22 +10,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Transformations.map
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
-
-
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
 import kotlinx.android.synthetic.main.activity_main.*
-
 import kotlinx.android.synthetic.main.main_contents.*
 import kotlinx.coroutines.NonCancellable.start
-import java.nio.file.Files.find
 
 lateinit var locationPermission: ActivityResultLauncher<Array<String>>
 
@@ -45,27 +40,21 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         val permissions = arrayOf(
             Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO
         )
         permissionChecker = PermissionChecker(this, permissions)
         if (permissionChecker.check()) {
             // 초기화
-
         }
-
-
-
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.mainContents.toolbarv)
+        setSupportActionBar(toolbarv)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
-
-        binding.naviView.setNavigationItemSelectedListener(this)
 
         val drawerLayout: DrawerLayout = binding.layoutDrawer
         val naviView: NavigationView = binding.naviView
@@ -75,18 +64,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
-                R.id.navigation_calender,
-                R.id.navigation_setting,
-                R.id.navigation_dairy,
-                R.id.navigation_graph,
-                R.id.navigation_music,
-                R.id.navigation_meditation,
-                R.id.navigation_mypage,
-                R.id.navigation_room,
-                R.id.navigation_askhelp,
-            ), drawerLayout
+            ),drawerLayout
         )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+       setupActionBarWithNavController(navController, appBarConfiguration)
        naviView.setupWithNavController(navController)
        navbottomView.setupWithNavController(navController)
 
@@ -108,11 +88,11 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        val menuInflater = menuInflater
-//        menuInflater.inflate(R.menu.menu, menu)
-//        return true
-//    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -127,21 +107,16 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             )
         ) {
 
-
         } else {
             // 권한 획득 실패
-
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-
-//            R.id.action_search -> {return super.onOptionsItemSelected(item)}
-            R.id.navigation_mypage -> Toast.makeText(applicationContext, "mypage", Toast.LENGTH_SHORT).show()
-            R.id.navigation_music -> Toast.makeText(applicationContext, "노래듣기", Toast.LENGTH_SHORT).show()
-            R.id.navigation_meditation -> Toast.makeText(applicationContext, "명상", Toast.LENGTH_SHORT).show()
+            R.id.action_search -> {return super.onOptionsItemSelected(item)}
+            R.id.layout_drawer -> {return super.onOptionsItemSelected(item)}
         }
         binding.layoutDrawer.closeDrawers()
         return false
@@ -150,14 +125,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-           R.id.navi_view->{
+           R.id.layout_drawer->{
                 layout_drawer.openDrawer(GravityCompat.START) }
-//        R.id.home -> {
-//                   finish()
-//                   return true
-//            }
+            R.id.action_search ->{}
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -176,13 +147,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             finishAffinity()
             System.runFinalization()
             System.exit(0) //액티비티 종료
-
         }
-
-    }
-
-
-
-
+      }
     }
 

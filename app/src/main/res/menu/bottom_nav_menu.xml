@@ -15,7 +15,7 @@
         android:title="@string/title_calender" />
 
     <item
-        android:id="@+id/navigation_dairy"
+        android:id="@+id/dairyFragment"
         android:icon="@drawable/ic_baseline_auto_awesome_24"
         android:enabled="true"
         android:title="@string/title_dairy" />

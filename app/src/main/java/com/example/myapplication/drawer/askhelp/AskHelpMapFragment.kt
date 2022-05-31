@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.location.Location
 import android.os.Bundle
+import android.util.LayoutDirection
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAskhelpmapBinding
 import com.google.android.gms.location.LocationCallback
@@ -30,7 +32,16 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
     private lateinit var mView: MapView
     private lateinit var mMap: GoogleMap
     private lateinit var locationCallback : LocationCallback
+    private var x: String? = null
+    private var y: String? = null
 
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        arguments?.let {
+//            x = it.getString("")
+//            y = it.getString("")
+//        }
+//    }
 
 
     override fun onCreateView(
@@ -41,7 +52,6 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
 
         _binding = FragmentAskhelpmapBinding.inflate(inflater, container, false)
         val root: View = binding.root
-//
 
         mView = root.findViewById(R.id.mapView)
         mView.onCreate(savedInstanceState)
@@ -51,12 +61,13 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView14.text = arguments?.getString("name")
+    binding.textView14.text= arguments?.getString("key1")
 
-    }
+}
 
     override fun onMapReady(googleMap: GoogleMap) {
-//        val args: AskHelpFragmentMapArgs by navArgs()
+
+
         val marker = LatLng(37.514322572335935,127.06283102249932)
         updateLocation()
         googleMap.addMarker(MarkerOptions().position(marker).title("여기"))
