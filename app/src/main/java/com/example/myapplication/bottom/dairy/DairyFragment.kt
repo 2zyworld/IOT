@@ -138,6 +138,7 @@ class DairyFragment : Fragment() {
                 }
                 if (state == 2) {
                     state = 0
+
                 }
                 Log.d("Loop", "${state}")
 
@@ -225,11 +226,16 @@ class DairyFragment : Fragment() {
 
 
                 if (state == 1) {
+                    Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT).show()
                     SpeechRecognizerManager.getInstance().initializeLibrary(context)
                     startUsingSpeechSDK()
 
 
                 }
+                if (state == 2){
+                    Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
+                }
+
 
 
             }
