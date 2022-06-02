@@ -7,6 +7,9 @@
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/memo_border.xml" value="0.126" />
         <entry key="app/src/main/res/drawable/red_edittext.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/white_edittext.xml" value="0.126" />
+
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1335" />
         <entry key="app/src/main/res/drawable/white_edittext.xml" value="0.126" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21333333333333335" />
@@ -19,8 +22,12 @@
         <entry key="app/src/main/res/layout/fragment_askhelp.xml" value="0.2608659150994174" />
         <entry key="app/src/main/res/layout/fragment_askhelp_listitem.xml" value="0.27309782608695654" />
         <entry key="app/src/main/res/layout/fragment_askhelp_map.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/fragment_askhelp_test.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_askhelpmain.xml" value="0.24662659018234395" />
         <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_color_explain.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dairy_detail.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/fragment_dairy_history.xml" value="0.25769927536231885" />
         <entry key="app/src/main/res/layout/fragment_dairy_list.xml" value="0.24947916666666667" />
@@ -36,12 +43,14 @@
         <entry key="app/src/main/res/layout/fragment_music.xml" value="0.2632478354633718" />
         <entry key="app/src/main/res/layout/fragment_mypage.xml" value="0.23007246376811594" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.11423505572441743" />
         <entry key="app/src/main/res/layout/fragment_room.xml" value="0.22848829058769868" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.31247178229732786" />
+
         <entry key="app/src/main/res/layout/main_contents.xml" value="0.2838760375976563" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.27738037109374997" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.18611111111111112" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.21885223388671876" />
         <entry key="app/src/main/res/menu/navi_menu.xml" value="0.18611111111111112" />
         <entry key="app/src/main/res/menu/navi_menu_header.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.113" />

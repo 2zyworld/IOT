@@ -15,7 +15,7 @@
             app:destination="@id/dairyDetailFragment" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_dairy"
-            app:destination="@id/navigation_dairy" />
+            app:destination="@id/dairyFragment" />
     </fragment>
 
     <fragment
@@ -30,10 +30,10 @@
         android:label="@string/title_setting"
         tools:layout="@layout/fragment_setting"/>
     <fragment
-        android:id="@+id/navigation_dairy"
+        android:id="@+id/dairyFragment"
         android:name="com.example.myapplication.bottom.dairy.DairyFragment"
-        android:label="@string/title_dairy"
-        tools:layout="@layout/fragment_dairy" >
+        android:label="fragment_dairy"
+        tools:layout="@layout/fragment_dairy">
         <action
             android:id="@+id/action_navigation_dairy_to_navigation_home"
             app:destination="@id/navigation_home" />
@@ -44,9 +44,9 @@
         android:label="@string/title_graph"
         tools:layout="@layout/fragment_graph" />
     <fragment
-        android:id="@+id/navigation_music"
+        android:id="@+id/musicFragment"
         android:name="com.example.myapplication.drawer.music.MusicFragment"
-        android:label="@string/title_music"
+        android:label="fragment_music"
         tools:layout="@layout/fragment_music" />
     <fragment
         android:id="@+id/navigation_askhelp"
@@ -56,7 +56,16 @@
         <action
             android:id="@+id/action_navigation_askhelp_to_askHelpMapFragment"
             app:destination="@id/askHelpMapFragment" />
+        <argument
+            android:name="argsString"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_navigation_askhelp_to_askHelpMainFragment"
+            app:destination="@id/askHelpMainFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/navigation_meditation"
         android:name="com.example.myapplication.drawer.meditation.MeditationFragment"
@@ -93,6 +102,7 @@
         android:id="@+id/dairyListFragment"
         android:name="com.example.myapplication.bottom.dairy.DairyListFragment"
         android:label="DairyListFragment" />
+
     <fragment
         android:id="@+id/askHelpMapFragment"
         android:name="com.example.myapplication.drawer.askhelp.AskHelpMapFragment"
@@ -101,7 +111,13 @@
         <action
             android:id="@+id/action_askHelpMapFragment_to_navigation_askhelp"
             app:destination="@id/navigation_askhelp" />
+        <argument
+            android:name="argsString"
+            app:argType="string"
+            android:defaultValue=""/>
+
     </fragment>
+
     <fragment
         android:id="@+id/humidifierFragment"
         android:name="com.example.myapplication.drawer.room.HumidifierFragment"
@@ -119,6 +135,15 @@
         <action
             android:id="@+id/action_lightFragment_to_navigation_room"
             app:destination="@id/navigation_room" />
+    </fragment>
+    <fragment
+        android:id="@+id/askHelpMainFragment"
+        android:name="com.example.myapplication.drawer.askhelp.AskHelpMainFragment"
+        android:label="fragment_askhelpmain"
+        tools:layout="@layout/fragment_askhelpmain" >
+        <action
+            android:id="@+id/action_askHelpMainFragment_to_navigation_askhelp"
+            app:destination="@id/navigation_askhelp" />
     </fragment>
 
 </navigation>

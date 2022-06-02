@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.homeQustion.setOnClickListener {
-            findNavController().navigate(R.id.navigation_dairy)
+            findNavController().navigate(R.id.dairyFragment)
         }
         binding.calendarView.setOnClickListener{
             findNavController().navigate(R.id.dairyDetailFragment)

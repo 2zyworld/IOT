@@ -15,5 +15,6 @@
     <string name="nav_header_desc">header_desc</string>
     <string name="nav_header_title">header_title</string>
     <string name="nav_header_subtitle">header_subtitle</string>
+    <string name="move">move</string>
 
 </resources>
