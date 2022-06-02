@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentCalenderBinding
+import com.example.myapplication.drawer.askhelp.AskHelpAdapter
+import com.example.myapplication.drawer.askhelp.AskHelpData
 
 
 class CalenderFragment : Fragment() {
@@ -22,18 +25,14 @@ class CalenderFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val CalenderViewModel =
-            ViewModelProvider(this).get(CalenderViewModel::class.java)
 
         _binding = FragmentCalenderBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.calender
-//        CalenderViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         return root
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

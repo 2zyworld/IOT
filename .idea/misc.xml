@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/memo_border.xml" value="0.126" />
@@ -14,6 +15,8 @@
         <entry key="app/src/main/res/drawable/white_edittext.xml" value="0.126" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21333333333333335" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.11458333333333333" />
+        <entry key="app/src/main/res/layout/activity_map.xml" value="0.23052536231884058" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.125" />
         <entry key="app/src/main/res/layout/app_bar.xml" value="1.0082236842105263" />
@@ -24,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_askhelp_map.xml" value="0.15307971014492755" />
         <entry key="app/src/main/res/layout/fragment_askhelp_test.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_askhelpmain.xml" value="0.24662659018234395" />
+        <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.3663629283075748" />
         <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_color_explain.xml" value="0.25833333333333336" />

@@ -2,8 +2,8 @@
     <string name="app_name">My Application</string>
     <string name="title_home">홈</string>
     <string name="title_mypage">마이페이지</string>
-    <string name="title_calender">달력</string>
-    <string name="title_dairy">다이어리</string>
+    <string name="title_calender">일기보기</string>
+    <string name="title_dairy">일기쓰기</string>
     <string name="title_graph">그래프</string>
     <string name="title_setting">설정</string>
     <string name="title_music">노래듣기</string>

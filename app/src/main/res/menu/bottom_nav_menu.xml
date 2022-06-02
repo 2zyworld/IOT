@@ -9,7 +9,7 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_calender"
+        android:id="@+id/dairyListFragment"
         android:icon="@android:drawable/ic_menu_my_calendar"
         android:enabled="true"
         android:title="@string/title_calender" />

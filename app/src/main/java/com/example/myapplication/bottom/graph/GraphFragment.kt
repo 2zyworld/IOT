@@ -1,27 +1,19 @@
 package com.example.myapplication.bottom.graph
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.room.util.TableInfo
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentGraphBinding
-import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.utils.ColorTemplate
 
 
 class GraphFragment : Fragment() {
@@ -31,7 +23,7 @@ class GraphFragment : Fragment() {
 
 
     inner class MyXAxisFormatter : ValueFormatter(){
-        private val days = arrayOf("1차","2차","3차","4차","5차","6차","7차")
+        private val days = arrayOf("1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             return days.getOrNull(value.toInt()-1) ?: value.toString()
         }
@@ -45,6 +37,7 @@ class GraphFragment : Fragment() {
 
         _binding = FragmentGraphBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
 
         val entries = ArrayList<BarEntry>()
 
