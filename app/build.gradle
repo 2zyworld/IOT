@@ -83,7 +83,7 @@ dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation"androidx.fragment:fragment-ktx:1.4.1"
 
     //retrofit
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -93,8 +93,6 @@ dependencies {
 
     // kakao 음성 api
     implementation 'com.kakao.sdk:newtone:6.1.4'
-
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'

@@ -22,7 +22,11 @@
         android:id="@+id/navigation_calender"
         android:name="com.example.myapplication.bottom.calender.CalenderFragment"
         android:label="@string/title_calender"
-        tools:layout="@layout/fragment_calender" />
+        tools:layout="@layout/fragment_calender" >
+        <action
+            android:id="@+id/action_navigation_calender_to_dairyListFragment"
+            app:destination="@id/dairyListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_setting"
@@ -37,6 +41,9 @@
         <action
             android:id="@+id/action_navigation_dairy_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_dairyFragment_to_dairyDetailFragment"
+            app:destination="@id/dairyDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_graph"
@@ -63,6 +70,22 @@
         <action
             android:id="@+id/action_navigation_askhelp_to_askHelpMainFragment"
             app:destination="@id/askHelpMainFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/askHelpMapFragment"
+        android:name="com.example.myapplication.drawer.askhelp.AskHelpMapFragment"
+        android:label="fragment_askhelpmap"
+        tools:layout="@layout/fragment_askhelpmap" >
+        <action
+            android:id="@+id/action_askHelpMapFragment_to_navigation_askhelp"
+            app:destination="@id/navigation_askhelp" />
+        <argument
+            android:name="argsString"
+            app:argType="string"
+            android:defaultValue=""/>
+
     </fragment>
 
 
@@ -100,23 +123,14 @@
     </fragment>
     <fragment
         android:id="@+id/dairyListFragment"
-        android:name="com.example.myapplication.bottom.dairy.DairyListFragment"
-        android:label="DairyListFragment" />
-
-    <fragment
-        android:id="@+id/askHelpMapFragment"
-        android:name="com.example.myapplication.drawer.askhelp.AskHelpMapFragment"
-        android:label="fragment_askhelpmap"
-        tools:layout="@layout/fragment_askhelpmap" >
+        android:name="com.example.myapplication.bottom.calender.DairyListFragment"
+        android:label="DairyListFragment" >
         <action
-            android:id="@+id/action_askHelpMapFragment_to_navigation_askhelp"
-            app:destination="@id/navigation_askhelp" />
-        <argument
-            android:name="argsString"
-            app:argType="string"
-            android:defaultValue=""/>
-
+            android:id="@+id/action_dairyListFragment_to_navigation_calender"
+            app:destination="@id/navigation_calender" />
     </fragment>
+
+
 
     <fragment
         android:id="@+id/humidifierFragment"
@@ -147,10 +161,12 @@
         <action
             android:id="@+id/action_askHelpMainFragment_to_askHelpTestFragment"
             app:destination="@id/askHelpTestFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/askHelpTestFragment"
         android:name="com.example.myapplication.drawer.askhelp.AskHelpTestFragment"
         android:label="AskHelpTestFragment" />
+
 
 </navigation>

@@ -23,7 +23,9 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import org.w3c.dom.Document
 
 class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
 
@@ -32,16 +34,9 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
     private lateinit var mView: MapView
     private lateinit var mMap: GoogleMap
     private lateinit var locationCallback : LocationCallback
-    private var x: String? = null
-    private var y: String? = null
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            x = it.getString("")
-//            y = it.getString("")
-//        }
-//    }
+    var latitude: Double? = null
+    var longitude: Double? = null
 
 
     override fun onCreateView(
@@ -68,6 +63,7 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
 
 
+//        val marker = LatLng(googleMap.latitude,googleMap.longitude)
         val marker = LatLng(37.514322572335935,127.06283102249932)
         updateLocation()
         googleMap.addMarker(MarkerOptions().position(marker).title("여기"))
@@ -75,6 +71,21 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(15f))
 
     }
+
+//    private fun setupMarker(document: Document): Marker {
+//        val positionLatLng = LatLng(
+//            Document.locationLatLng.latitude.toDouble(),
+//            Document.locationLatLng.longitude.toDouble()
+//        )
+//
+//        val MarkerOptions = MarkerOptions().apply{
+//            position(positionLatLng)
+//            title(Document.name)
+//            snippet(Document.fullAddress)
+//        }
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(positionLatLng, CAMERA_ZOOM_LEVEL))
+//        return mMap.addMarker(markerOptions)
+//    }
 
     override fun onStart() {
         super.onStart()

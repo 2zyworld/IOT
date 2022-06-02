@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.example.myapplication.R
@@ -201,7 +202,11 @@ class DairyFragment : Fragment() {
                     Log.e("게시물 등록 실패", t.localizedMessage)
                     Toast.makeText(context, "게시물 등록 실패", Toast.LENGTH_SHORT).show()
                 }
-            })
+
+
+            }
+
+            )
 
 
 
@@ -211,6 +216,9 @@ class DairyFragment : Fragment() {
             if (state == 2){
                 state = 0
             }
+
+            findNavController().navigate(R.id.dairyDetailFragment)
+
 
         }
 
