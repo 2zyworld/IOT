@@ -58,6 +58,10 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="906b66d9a41023c26e9ca44038f6c0ca" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
         <activity
             android:name=".PermissionChecker"
             android:exported="true"

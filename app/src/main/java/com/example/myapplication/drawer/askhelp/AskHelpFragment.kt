@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -58,8 +59,10 @@ class AskHelpFragment : Fragment() {
 
     private fun AskHelpFragmentDirections(document:Document){
 
+        val bundle = bundleOf("location" to document.x,"locationy" to document.y)
 
-        findNavController().navigate(R.id.action_navigation_askhelp_to_askHelpMapFragment)
+        findNavController().navigate(R.id.askHelpMapFragment,bundle)
+
     }
 
 }

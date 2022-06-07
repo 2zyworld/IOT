@@ -16,7 +16,7 @@ import retrofit2.http.Query
 
 interface AskHelpService {
     @Headers("Authorization: KakaoAK b7fe6bde7366a4b3b39483ee5cc491be")
-    @GET("/v2/local/search/keyword.json?y=37.514322572335935&x=127.06283102249932&radius=1000")
+    @GET("/v2/local/search/keyword.json?y=37.514322572335935&x=127.06283102249932&radius=3000")
     fun getAskHelpData(
         @Query("query") keyword: String
 

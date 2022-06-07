@@ -44,7 +44,7 @@ class Register : AppCompatActivity() {
 
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://a68039ed238d849789d17c141e432fe9-188230756.ap-southeast-1.elb.amazonaws.com:8000/")
+            .baseUrl("http://3.0.128.249:8000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         var signupservice:Signupservice = retrofit.create(Signupservice::class.java)

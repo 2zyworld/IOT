@@ -22,16 +22,9 @@ class MusicFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val MusicViewModel =
-            ViewModelProvider(this).get(MusicViewModel::class.java)
-
         _binding = FragmentMusicBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.music
-        MusicViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

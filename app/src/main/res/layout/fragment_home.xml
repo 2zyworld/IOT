@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
     tools:context=".bottom.home.HomeFragment">
 
     <ScrollView
@@ -27,23 +27,24 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="블루의 질문"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif"
+                android:text="From. BLU "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20sp" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/home_qustion"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="16dp"
-                android:clickable="true"
-                app:cardCornerRadius="50dp">
+                android:layout_height="match_parent"
+                app:cardCornerRadius="40dp">
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/homeQustion"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:padding="16dp"
                     android:text="오늘 하루는 어땠어?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textSize="16sp" />
@@ -56,26 +57,24 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="나의 달력"
+                android:fontFamily="sans-serif"
+                android:text="MY DIARY"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
-            <CalendarView
-                android:id="@+id/calendarView"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:contextClickable="true"
-                android:maxDate="12/31/2100"
-                android:minDate="01/01/2022" />
+                android:layout_height="match_parent"
+                app:cardCornerRadius="40dp">
 
-            <TextView
-                android:id="@+id/day"
-                android:layout_width="match_parent"
-                android:layout_height="77dp"
-                android:layout_margin="8dp"
-                android:text="text" />
+                <CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contextClickable="true"
+                    android:maxDate="12/31/2100"
+                    android:minDate="01/01/2022" />
+            </androidx.cardview.widget.CardView>
 
 
         </LinearLayout>

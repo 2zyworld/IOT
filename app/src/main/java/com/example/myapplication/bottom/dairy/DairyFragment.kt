@@ -161,7 +161,6 @@ class DairyFragment : Fragment() {
 
 
 
-
         Log.d("create", "프래그먼트 실행")
         val DairyViewModel =
             ViewModelProvider(this).get(DairyViewModel::class.java)
@@ -170,7 +169,7 @@ class DairyFragment : Fragment() {
 
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://13.215.200.30:8000/")
+            .baseUrl("http://3.0.128.249:8000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         var postservice: PostService = retrofit.create(PostService::class.java)
@@ -178,12 +177,14 @@ class DairyFragment : Fragment() {
         binding.postButton.setOnClickListener {
 
 
-            val author = UserName.username
+//            val author = UserName.username
+            val author = "iot"
             val title = binding.diaryTitle.text.toString()
             val content = binding.diaryPost.text.toString()
 
-
             val post = Post(author, title, content)
+
+
             postservice.requestPost(post).enqueue(object: Callback<PostState> {
                 override fun onResponse(call: Call<PostState>, response: Response<PostState>) {
                     if(response.isSuccessful) {

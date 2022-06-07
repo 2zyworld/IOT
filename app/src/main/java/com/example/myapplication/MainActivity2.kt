@@ -33,7 +33,7 @@ class MainActivity2 : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
         val keyHash = Utility.getKeyHash(this /* context */)
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://a68039ed238d849789d17c141e432fe9-188230756.ap-southeast-1.elb.amazonaws.com:8000")
+            .baseUrl("http://3.0.128.249:8000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         var loginService: LoginService = retrofit.create(LoginService::class.java)

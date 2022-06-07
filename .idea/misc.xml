@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/borderc.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/memo_border.xml" value="0.126" />
@@ -23,25 +25,28 @@
         <entry key="app/src/main/res/layout/fragment_askhelp_map.xml" value="0.15307971014492755" />
         <entry key="app/src/main/res/layout/fragment_askhelp_test.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_askhelpmain.xml" value="0.24662659018234395" />
-        <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.3663629283075748" />
+        <entry key="app/src/main/res/layout/fragment_askhelpmap.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.30446033361784586" />
         <entry key="app/src/main/res/layout/fragment_color_explain.xml" value="0.25833333333333336" />
-        <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_dairy_detail.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.30100899431898376" />
+        <entry key="app/src/main/res/layout/fragment_dairy_detail.xml" value="0.27922159830729165" />
         <entry key="app/src/main/res/layout/fragment_dairy_history.xml" value="0.25769927536231885" />
         <entry key="app/src/main/res/layout/fragment_dairy_list.xml" value="0.24947916666666667" />
-        <entry key="app/src/main/res/layout/fragment_dairy_listitem.xml" value="0.2875905797101449" />
+        <entry key="app/src/main/res/layout/fragment_dairy_listitem.xml" value="0.37512262316717615" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.1824074074074074" />
         <entry key="app/src/main/res/layout/fragment_graph.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/fragment_history_detail.xml" value="0.18802083333333333" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22219238281250003" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2609481811523437" />
         <entry key="app/src/main/res/layout/fragment_humidifier.xml" value="0.33152173913043476" />
         <entry key="app/src/main/res/layout/fragment_light.xml" value="0.33152173913043476" />
+        <entry key="app/src/main/res/layout/fragment_light_explain.xml" value="0.30117753623188404" />
         <entry key="app/src/main/res/layout/fragment_meditation.xml" value="0.11423505572441743" />
         <entry key="app/src/main/res/layout/fragment_music.xml" value="0.2632478354633718" />
-        <entry key="app/src/main/res/layout/fragment_mypage.xml" value="0.23007246376811594" />
+        <entry key="app/src/main/res/layout/fragment_music_list.xml" value="0.22637176513671878" />
+        <entry key="app/src/main/res/layout/fragment_mypage.xml" value="0.400355871886121" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.2776268115942029" />
-        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.11423505572441743" />
+        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.29624799517754247" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.31247178229732786" />
         <entry key="app/src/main/res/layout/main_contents.xml" value="0.2838760375976563" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.27738037109374997" />

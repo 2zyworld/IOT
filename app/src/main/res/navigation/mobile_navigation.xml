@@ -18,15 +18,36 @@
             app:destination="@id/dairyFragment" />
     </fragment>
 
+
+
+
     <fragment
         android:id="@+id/navigation_calender"
         android:name="com.example.myapplication.bottom.calender.CalenderFragment"
         android:label="@string/title_calender"
         tools:layout="@layout/fragment_calender" >
+
         <action
             android:id="@+id/action_navigation_calender_to_dairyListFragment"
             app:destination="@id/dairyListFragment" />
+        <argument
+            android:name="content"
+            app:argType="string"
+            android:defaultValue="0" />
     </fragment>
+
+    <fragment
+        android:id="@+id/dairyDetailFragment"
+        android:name="com.example.myapplication.bottom.dairy.DairyDetailFragment"
+        android:label="fragment_dairy_detail"
+        tools:layout="@layout/fragment_dairy_detail" >
+
+        <action
+            android:id="@+id/action_dairyDetailFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+
 
     <fragment
         android:id="@+id/navigation_setting"
@@ -78,13 +99,18 @@
         android:name="com.example.myapplication.drawer.askhelp.AskHelpMapFragment"
         android:label="fragment_askhelpmap"
         tools:layout="@layout/fragment_askhelpmap" >
+        <argument
+            android:name="location"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="locationy"
+            app:argType="string"
+            android:defaultValue=""/>
         <action
             android:id="@+id/action_askHelpMapFragment_to_navigation_askhelp"
             app:destination="@id/navigation_askhelp" />
-        <argument
-            android:name="argsString"
-            app:argType="string"
-            android:defaultValue=""/>
+
 
     </fragment>
 
@@ -112,15 +138,7 @@
         android:name="com.example.myapplication.drawer.Mypage.MypageFragment"
         android:label="@string/title_mypage"
         tools:layout="@layout/fragment_mypage" />
-    <fragment
-        android:id="@+id/dairyDetailFragment"
-        android:name="com.example.myapplication.bottom.dairy.DairyDetailFragment"
-        android:label="fragment_dairy_detail"
-        tools:layout="@layout/fragment_dairy_detail" >
-        <action
-            android:id="@+id/action_dairyDetailFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
+
     <fragment
         android:id="@+id/dairyListFragment"
         android:name="com.example.myapplication.bottom.calender.DairyListFragment"

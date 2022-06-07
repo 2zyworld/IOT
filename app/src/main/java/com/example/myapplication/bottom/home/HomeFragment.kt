@@ -47,25 +47,25 @@ class HomeFragment : Fragment() {
 
         calendarView.minDate = SimpleDateFormat("yyyyMMdd").parse("20220101").time
         calendarView.maxDate = SimpleDateFormat("yyyyMMDD").parse("21001231").time
-
-
-        day.text = ""+calendarView.date
-        calendarView.setOnDateChangeListener{ view, year, month, dayOfMonth ->
-            if(month<9){
-                if(dayOfMonth<10){
-                    day.text = ""+year+"년"+(month+1)+"월"+0+dayOfMonth+"일"
-                } else{
-                    day.text = ""+year+"년"+0+(month+1)+"월"+dayOfMonth+"일"
-                }}else{
-                if(dayOfMonth<10) {
-                    day.text = ""+year+"년"+(month+1)+"월"+0+dayOfMonth+"일"
-
-                } else {
-                    day.text = ""+year+"년"+(month+1)+"월"+dayOfMonth+"일"
-
-                }
-            }
-        }
+//
+//
+//        day.text = ""+calendarView.date
+//        calendarView.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+//            if(month<9){
+//                if(dayOfMonth<10){
+//                    day.text = ""+year+"년"+(month+1)+"월"+0+dayOfMonth+"일"
+//                } else{
+//                    day.text = ""+year+"년"+0+(month+1)+"월"+dayOfMonth+"일"
+//                }}else{
+//                if(dayOfMonth<10) {
+//                    day.text = ""+year+"년"+(month+1)+"월"+0+dayOfMonth+"일"
+//
+//                } else {
+//                    day.text = ""+year+"년"+(month+1)+"월"+dayOfMonth+"일"
+//
+//                }
+//            }s
+//        }
     }
 
 

@@ -8,34 +8,33 @@
     tools:context=".drawer.room.RoomFragment">
 
 
-    <Button
-        android:id="@+id/humidifierpage_button"
-        android:layout_width="210dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="450dp"
-        android:text="Humidifier"
-        app:icon="@drawable/humidifier"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/lightpage_button"
-        android:layout_width="210dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="180dp"
-        android:text="light"
-        app:icon="@drawable/light"
-        app:layout_constraintBottom_toTopOf="@+id/humidifierpage_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <Button
+            android:id="@+id/humidifierpage_button"
+            android:layout_width="210dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="100dp"
+            android:text="Humidifier"
+            app:icon="@drawable/humidifier" />
+
+        <Button
+            android:id="@+id/lightpage_button"
+            android:layout_width="210dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="180dp"
+            android:text="light"
+            app:icon="@drawable/light" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

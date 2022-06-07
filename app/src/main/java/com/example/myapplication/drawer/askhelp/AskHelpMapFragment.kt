@@ -29,15 +29,13 @@ import org.w3c.dom.Document
 
 class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
 
+    private var latitude:Double? = null
+    private var longitude: Double? = null
     private var _binding: FragmentAskhelpmapBinding? = null
     private val binding get() = _binding!!
     private lateinit var mView: MapView
     private lateinit var mMap: GoogleMap
     private lateinit var locationCallback : LocationCallback
-
-    var latitude: Double? = null
-    var longitude: Double? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +46,13 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
         _binding = FragmentAskhelpmapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+
+        binding.apply {
+            longitude  =  arguments?.getString("location")?.toDouble()
+            latitude = arguments?.getString("locationy")?.toDouble()
+
+        }
+
         mView = root.findViewById(R.id.mapView)
         mView.onCreate(savedInstanceState)
         mView.getMapAsync(this)
@@ -56,15 +61,11 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    binding.textView14.text= arguments?.getString("key1")
-
 }
 
     override fun onMapReady(googleMap: GoogleMap) {
 
-
-//        val marker = LatLng(googleMap.latitude,googleMap.longitude)
-        val marker = LatLng(37.514322572335935,127.06283102249932)
+        val marker = LatLng(latitude!!,longitude!!)
         updateLocation()
         googleMap.addMarker(MarkerOptions().position(marker).title("여기"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
@@ -72,20 +73,6 @@ class AskHelpMapFragment() : Fragment(), OnMapReadyCallback {
 
     }
 
-//    private fun setupMarker(document: Document): Marker {
-//        val positionLatLng = LatLng(
-//            Document.locationLatLng.latitude.toDouble(),
-//            Document.locationLatLng.longitude.toDouble()
-//        )
-//
-//        val MarkerOptions = MarkerOptions().apply{
-//            position(positionLatLng)
-//            title(Document.name)
-//            snippet(Document.fullAddress)
-//        }
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(positionLatLng, CAMERA_ZOOM_LEVEL))
-//        return mMap.addMarker(markerOptions)
-//    }
 
     override fun onStart() {
         super.onStart()

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -51,8 +52,10 @@ class DairyListFragment : Fragment() {
 
 private fun DairyListFragmentDirections(dairyItem: dairyhistoryItem){
 
+    val bundle = bundleOf("content" to dairyItem.content)
 
-    findNavController().navigate(R.id.navigation_calender)
+    findNavController().navigate(R.id.navigation_calender,bundle)
+
 }
 
 
