@@ -13,6 +13,8 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAskhelpBinding
 import com.example.myapplication.databinding.FragmentMusicBinding
 import com.example.myapplication.drawer.askhelp.datas.Document
+import com.example.myapplication.drawer.askhelp.datas.askhelpdata
+import com.example.myapplication.drawer.meditation.data.data
 import com.example.myapplication.drawer.music.MusicViewModel
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -56,8 +58,7 @@ class AskHelpFragment : Fragment() {
     }
 
 
-    private fun AskHelpFragmentDirections(document:Document){
-
+    private fun AskHelpFragmentDirections(document: Document){
 
         findNavController().navigate(R.id.action_navigation_askhelp_to_askHelpMapFragment)
     }

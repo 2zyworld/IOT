@@ -5,38 +5,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.bottom.calender.dairy_history.dairyhistoryItem
+import com.example.myapplication.drawer.askhelp.AskHelpFragment
 import com.example.myapplication.drawer.askhelp.datas.Document
+import java.util.logging.Logger.global
 
 
 class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhistoryItem)->Unit)
     : RecyclerView.Adapter<DairyAdapter.ViewHolder>() {
 
     lateinit var dairyItem: dairyhistoryItem
-    var content_main = ""
+
 
     inner class ViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind (dairy: dairyhistoryItem?) {
 
             val textView5: TextView = itemView.findViewById(R.id.textView5)
             textView5.text = dairy!!.title
-            content_main = dairy!!.content.toString()
+
+
 
         dairyItem = dairyhistoryItem()
         }
 
-    }
-    fun setDataAtFragment(fragment: Fragment, content:String) {
-        val bundle = Bundle()
-        bundle.putString("cotent", content_main)
-
-        fragment.arguments= bundle
 
     }
+
+
+
+
 
 
     override fun onBindViewHolder(holder: DairyAdapter.ViewHolder, position: Int) {
@@ -55,11 +57,12 @@ class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhist
         view.setOnClickListener {
 
         direction(dairyItem)
-//            view.findNavController().navigate(R.id.navigation_calender)
+
 
         }
         return ViewHolder(view)
     }
+
 
 }
 

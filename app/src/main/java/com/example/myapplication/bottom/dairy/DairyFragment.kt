@@ -20,15 +20,22 @@ import com.example.myapplication.bottom.dairy.dairy_post.PostState
 import com.example.myapplication.bottom.dairy.dairy_post.UserName
 import com.example.myapplication.bottom.home.HomeFragment
 import com.example.myapplication.databinding.FragmentDairyBinding
+import com.example.myapplication.drawer.room.Mqtt
+import com.example.myapplication.drawer.room.arr
+import com.example.myapplication.drawer.room.test_data
 import com.kakao.sdk.newtoneapi.SpeechRecognizeListener
 import com.kakao.sdk.newtoneapi.SpeechRecognizerClient
 import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
+import org.eclipse.paho.client.mqttv3.MqttMessage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+private const val SUB_TOPIC = "Android" //받아오기
+private const val DAIRY_TOPIC = "data/light"
+private const val SERVER_URI = "tcp://172.30.1.2"
 
 class DairyFragment : Fragment() {
 
@@ -40,117 +47,11 @@ class DairyFragment : Fragment() {
     var state: Int = 0
     var index: Int = 0
 
-
-    private fun startUsingSpeechSDK() {
-
-
-        val builder = SpeechRecognizerClient.Builder()
-            .setServiceType(SpeechRecognizerClient.SERVICE_TYPE_DICTATION)
-            .setGlobalTimeOut(3000)
-        //클라이언트 생성
-        var client = builder.build()
+    lateinit var mqttClient: Mqtt
+    lateinit var msg : String
 
 
-        //Callback
-        client.setSpeechRecognizeListener(object : SpeechRecognizeListener {
-            //콜백함수들
-            override fun onReady() {
-                Log.d("onReady", "모든 하드웨어 및 오디오 서비스가 준비되었습니다.")
-            }
 
-            override fun onBeginningOfSpeech() {
-                Log.d("onBeginningOfspeech", "사용자가 말을 하기 시작했습니다.")
-
-            }
-
-            override fun onEndOfSpeech() {
-                Log.d("onEndOfSpeech", "사용자의 말하기가 끝이 났습니다. 데이터를 서버로 전달합니다.")
-
-
-            }
-
-            override fun onPartialResult(partialResult: String?) {
-                //현재 인식된 음성테이터 문자열을 출력해 준다. 여러번 호출됨. 필요에 따라 사용하면 됨.
-                Log.d("onPartialResult", "현재까지 인식된 문자열:" + partialResult)
-                if (state == 2) {
-                    client.cancelRecording()
-
-                    state = 0
-
-                }
-
-            }
-
-            /*
-                최종결과 - 음성입력이 종료 혹은 stopRecording()이 호출되고 서버에 질의가 완료되고 나서 호출됨
-                Bundle에 ArrayList로 값을 받음. 신뢰도가 높음 것 부터...
-                 */
-            override fun onResults(results: Bundle?) {
-                val texts =
-                    results?.getStringArrayList(SpeechRecognizerClient.KEY_RECOGNITION_RESULTS)
-                val confs =
-                    results?.getIntegerArrayList(SpeechRecognizerClient.KEY_CONFIDENCE_VALUES)
-
-                Log.d("", texts?.get(0).toString())
-                Log.d("addtext", add_text)
-
-                binding.diaryPost.getText()
-                    .insert(binding.diaryPost.getSelectionStart(), "${texts?.get(0).toString()} ");
-
-
-                //정확도가 높은 첫번째 결과값을 텍스트뷰에 출력
-
-            }
-
-
-            override fun onAudioLevel(audioLevel: Float) {
-                //Log.d(TAG, "Audio Level(0~1): " + audioLevel.toString())
-            }
-
-            override fun onError(errorCode: Int, errorMsg: String?) {
-                //에러 출력 해 봄
-
-                Log.d("onError", "Error: " + errorMsg)
-                if (state == 1) {
-                    //음성인식 시작함
-                    client.cancelRecording()
-                    client.startRecording(true)
-                    Log.d("error", "loostart")
-
-
-                }
-                if (state == 2) {
-                    state = 0
-                }
-
-
-            }
-
-            override fun onFinished() {
-
-                Log.d("finish", "end")
-
-                if (state == 1) {
-                    //음성인식 시작함
-                    client.startRecording(true)
-                    Log.d("Loop", "start")
-
-
-                }
-                if (state == 2) {
-                    state = 0
-                }
-                Log.d("Loop", "${state}")
-
-
-            }
-        })
-
-
-        client.startRecording(true)
-
-
-    }
 
 
     override fun onCreateView(
@@ -160,7 +61,15 @@ class DairyFragment : Fragment() {
     ): View {
 
 
+        mqttClient = Mqtt(context, SERVER_URI)
+        try {
+            // mqttClient.setCallback { topic, message ->}
+            mqttClient.setCallback(::onReceived)
+            mqttClient.connect(arrayOf<String>(SUB_TOPIC))
 
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         Log.d("create", "프래그먼트 실행")
         val DairyViewModel =
@@ -170,7 +79,7 @@ class DairyFragment : Fragment() {
 
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://13.215.200.30:8000/")
+            .baseUrl("http://3.0.128.249:8000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         var postservice: PostService = retrofit.create(PostService::class.java)
@@ -178,7 +87,8 @@ class DairyFragment : Fragment() {
         binding.postButton.setOnClickListener {
 
 
-            val author = UserName.username
+//            val author = UserName.username
+            val author = "iot"
             val title = binding.diaryTitle.text.toString()
             val content = binding.diaryPost.text.toString()
 
@@ -191,6 +101,7 @@ class DairyFragment : Fragment() {
                         Log.d("게시물", "${result?.code}")
                         Log.d("게시물", "${result?.msg}")
                         Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT).show()
+                        mqttClient.publish(DAIRY_TOPIC, "color,${content}")
 
                     } else {
                         Log.d("게시물 등록 에러 ", response.errorBody()!!.string())
@@ -233,11 +144,16 @@ class DairyFragment : Fragment() {
 
 
                 if (state == 1) {
+                    Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT).show()
                     SpeechRecognizerManager.getInstance().initializeLibrary(context)
                     startUsingSpeechSDK()
 
 
                 }
+                if (state == 2){
+                    Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
+                }
+
 
 
             }
@@ -246,12 +162,138 @@ class DairyFragment : Fragment() {
             return root
         }
 
-
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
             SpeechRecognizerManager.getInstance().finalizeLibrary()
         }
+        fun onReceived(topic: String?, message: MqttMessage) {
+            // 토픽 수신 처리
+            val msg = String(message.payload)
+            Log.i("Mqtt_result","수신메세지: $msg")
+            test_data = msg //문자열, 비트
+            arr = test_data.split(",")
+            Log.i("Mqtt_result", "수신] 데이터 값 : $test_data// $arr")
+            Log.i("Mqtt_result","수신메세지: "+ test_data)
+
+
+
+        }
+        private fun startUsingSpeechSDK() {
+
+
+            val builder = SpeechRecognizerClient.Builder()
+                .setServiceType(SpeechRecognizerClient.SERVICE_TYPE_DICTATION)
+                .setGlobalTimeOut(3000)
+            //클라이언트 생성
+            var client = builder.build()
+
+
+            //Callback
+            client.setSpeechRecognizeListener(object : SpeechRecognizeListener {
+                //콜백함수들
+                override fun onReady() {
+                    Log.d("onReady", "모든 하드웨어 및 오디오 서비스가 준비되었습니다.")
+                }
+
+                override fun onBeginningOfSpeech() {
+                    Log.d("onBeginningOfspeech", "사용자가 말을 하기 시작했습니다.")
+
+                }
+
+                override fun onEndOfSpeech() {
+                    Log.d("onEndOfSpeech", "사용자의 말하기가 끝이 났습니다. 데이터를 서버로 전달합니다.")
+
+
+                }
+
+                override fun onPartialResult(partialResult: String?) {
+                    //현재 인식된 음성테이터 문자열을 출력해 준다. 여러번 호출됨. 필요에 따라 사용하면 됨.
+                    Log.d("onPartialResult", "현재까지 인식된 문자열:" + partialResult)
+                    if (state == 2) {
+                        client.cancelRecording()
+
+                        state = 0
+
+                    }
+
+                }
+
+                /*
+                    최종결과 - 음성입력이 종료 혹은 stopRecording()이 호출되고 서버에 질의가 완료되고 나서 호출됨
+                    Bundle에 ArrayList로 값을 받음. 신뢰도가 높음 것 부터...
+                     */
+                override fun onResults(results: Bundle?) {
+                    val texts =
+                        results?.getStringArrayList(SpeechRecognizerClient.KEY_RECOGNITION_RESULTS)
+                    val confs =
+                        results?.getIntegerArrayList(SpeechRecognizerClient.KEY_CONFIDENCE_VALUES)
+
+                    Log.d("", texts?.get(0).toString())
+                    Log.d("addtext", add_text)
+
+                    binding.diaryPost.getText()
+                        .insert(binding.diaryPost.getSelectionStart(), "${texts?.get(0).toString()} ");
+
+
+                    //정확도가 높은 첫번째 결과값을 텍스트뷰에 출력
+
+                }
+
+
+                override fun onAudioLevel(audioLevel: Float) {
+                    //Log.d(TAG, "Audio Level(0~1): " + audioLevel.toString())
+                }
+
+                override fun onError(errorCode: Int, errorMsg: String?) {
+                    //에러 출력 해 봄
+
+                    Log.d("onError", "Error: " + errorMsg)
+                    if (state == 1) {
+                        //음성인식 시작함
+                        client.cancelRecording()
+                        client.startRecording(true)
+                        Log.d("error", "loopstart")
+
+
+                    }
+                    if (state == 2) {
+                        state = 0
+                    }
+
+
+                }
+
+                override fun onFinished() {
+
+                    Log.d("finish", "end")
+
+                    if (state == 1) {
+                        //음성인식 시작함
+                        client.cancelRecording()
+                        client.startRecording(true)
+                        Log.d("Loop", "start,${state}")
+
+
+                    }
+                    if (state == 2) {
+                        state = 0
+
+                    }
+                    Log.d("Loop", "${state}")
+
+
+                }
+            })
+
+
+            client.startRecording(true)
+
+
+        }
+
+
+
     }
 
 
