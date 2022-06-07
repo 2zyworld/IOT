@@ -68,6 +68,7 @@
             tools:ignore="Instantiatable" />
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
+
     </application>
 
 

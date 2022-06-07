@@ -27,10 +27,6 @@ class DairyDetailFragment : Fragment() {
         _binding = FragmentDairyDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.dairy
-//        DairyViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         return root
     }
     override fun onDestroyView() {

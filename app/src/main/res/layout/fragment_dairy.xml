@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/memo_border"
     android:overScrollMode="always"
 
     tools:context=".bottom.dairy.DairyFragment">
@@ -68,7 +69,7 @@
         android:layout_marginBottom="150dp"
         android:isScrollContainer="false"
         app:cornerRadius="90dp"
-        app:icon="@drawable/mic_icon2"
+        app:icon="@drawable/mic_icon"
         app:iconGravity="textEnd"
         app:iconPadding="0dp"
         app:iconSize="50dp"
