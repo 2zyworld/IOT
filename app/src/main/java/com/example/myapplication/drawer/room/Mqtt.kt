@@ -35,7 +35,7 @@ class Mqtt(val ctx: Context?, val uri: String) {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
                     Log.i(TAG, "connect succeed")
                     topics?.map {subscribeTopic(it)}
-                    publish("data/light", "init,android_mood")
+//                    publish("data/light", "init,android_mood")
 
                     Log.i("Mqtt_result", "전송] android_mood ")
                 }
