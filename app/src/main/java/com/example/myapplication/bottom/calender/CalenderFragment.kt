@@ -9,6 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.room.Update
 import com.example.myapplication.bottom.dairy.dairy_post.UserName
+import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentCalenderBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,6 +20,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
+import com.example.myapplication.drawer.askhelp.AskHelpAdapter
+import com.example.myapplication.drawer.askhelp.AskHelpData
+private var title:String? =null
+private var content:String? = null
+private var date:String? = null
 
 class CalenderFragment : Fragment() {
 
@@ -46,6 +54,7 @@ class CalenderFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentCalenderBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

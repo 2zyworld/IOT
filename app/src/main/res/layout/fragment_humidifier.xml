@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".drawer.room.HumidifierFragment">
 
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="323dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

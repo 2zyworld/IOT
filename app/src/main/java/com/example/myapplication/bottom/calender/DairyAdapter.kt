@@ -1,14 +1,19 @@
 package com.example.myapplication.bottom.calender
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.bottom.calender.dairy_history.dairyhistoryItem
+import com.example.myapplication.drawer.askhelp.AskHelpFragment
 import com.example.myapplication.drawer.askhelp.datas.Document
+import java.util.logging.Logger.global
 
 
 class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhistoryItem)->Unit)
@@ -21,6 +26,8 @@ class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhist
         init {
 
             itemView.setOnClickListener {
+
+
 
                 direction(dairyItem)
 //            view.findNavController().navigate(R.id.navigation_calender)
@@ -54,6 +61,8 @@ class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhist
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DairyAdapter.ViewHolder {
         var view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_dairy_listitem, parent,false)
+
+
 
 
         return ViewHolder(view)
