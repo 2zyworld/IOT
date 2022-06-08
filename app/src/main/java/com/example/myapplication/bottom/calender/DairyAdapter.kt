@@ -15,6 +15,7 @@ import com.example.myapplication.drawer.askhelp.AskHelpFragment
 import com.example.myapplication.drawer.askhelp.datas.Document
 import java.util.logging.Logger.global
 
+lateinit var arr: List<String>
 
 class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhistoryItem)->Unit)
     : RecyclerView.Adapter<DairyAdapter.ViewHolder>() {
@@ -38,8 +39,10 @@ class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhist
 
             val textView5: TextView = itemView.findViewById(R.id.textView5)
             textView5.text = dairy!!.title
+
             val historydates: TextView = itemView.findViewById(R.id.historydates)
-            historydates.text = dairy!!.dtCreated
+            arr = dairy!!.dtCreated.toString().split("T")
+            historydates.text = arr[0]
 
 
 
