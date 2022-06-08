@@ -52,7 +52,7 @@ class DairyListFragment : Fragment() {
 
 private fun DairyListFragmentDirections(dairyItem: dairyhistoryItem){
 
-    val bundle = bundleOf("content" to dairyItem.content)
+    val bundle = bundleOf("content" to dairyItem.content,"title" to dairyItem.title,"id" to dairyItem.id)
 
     findNavController().navigate(R.id.navigation_calender,bundle)
 

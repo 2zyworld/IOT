@@ -49,6 +49,8 @@ class GraphFragment : Fragment() {
 
         binding.chart.setUsePercentValues(true)
 
+
+
         val entries = ArrayList<PieEntry>()
         entries.add(PieEntry(508f,"Angry"))
         entries.add(PieEntry(600f,"Anticipate"))

@@ -44,7 +44,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="50dp">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
 
                 </com.github.mikephil.charting.charts.PieChart>
             </androidx.cardview.widget.CardView>
@@ -73,7 +76,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="50dp">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
 
                 </com.github.mikephil.charting.charts.BarChart>
             </androidx.cardview.widget.CardView>

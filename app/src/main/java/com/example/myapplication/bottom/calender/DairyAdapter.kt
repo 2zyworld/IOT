@@ -19,7 +19,7 @@ import java.util.logging.Logger.global
 class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhistoryItem)->Unit)
     : RecyclerView.Adapter<DairyAdapter.ViewHolder>() {
 
-
+    lateinit var arr: List<String>
 
     inner class ViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         lateinit var dairyItem: dairyhistoryItem
@@ -41,6 +41,8 @@ class DairyAdapter (val dairy: List<dairyhistoryItem>?,val direction: (dairyhist
             val historydates: TextView = itemView.findViewById(R.id.historydates)
             historydates.text = dairy!!.dtCreated
 
+            arr = dairy!!.dtCreated.toString().split("T")
+            historydates.text = arr[0]
 
 
             dairyItem = dairy
