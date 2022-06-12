@@ -22,7 +22,7 @@ class GraphAdapter (val graph: List<graphdataItem>?)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GraphAdapter.ViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_dairy_listitem, parent,false)
+            .inflate(R.layout.fragment_graph, parent,false)
 
         return ViewHolder(view)
     }

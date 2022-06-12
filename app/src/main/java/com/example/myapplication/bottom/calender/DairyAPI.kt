@@ -23,7 +23,6 @@ interface DiaryService {
 object DairyData {
     private val retrofit = Retrofit.Builder()
 
-//        .baseUrl("http://a4edbd6056b8a453eb7b4c88034f10e8-841047717.ap-southeast-1.elb.amazonaws.com:8000/")
         .baseUrl("http://3.0.128.249:8000/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()

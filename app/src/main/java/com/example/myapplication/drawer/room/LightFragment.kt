@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLightBinding
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
@@ -121,6 +123,16 @@ class LightFragment : Fragment() {
         return root
 
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.textbutton.setOnClickListener {
+            findNavController().navigate(R.id.lightExplainFragment)
+
+        }
+    }
+
     fun onReceived(topic: String?, message: MqttMessage) {
         // 토픽 수신 처리
         val msg = String(message.payload)
@@ -142,3 +154,4 @@ class LightFragment : Fragment() {
     }
 
 }
+

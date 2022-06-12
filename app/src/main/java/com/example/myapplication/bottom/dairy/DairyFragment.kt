@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -61,15 +62,15 @@ class DairyFragment : Fragment() {
     ): View {
 
 
-        mqttClient = Mqtt(context, SERVER_URI)
-        try {
-            // mqttClient.setCallback { topic, message ->}
-            mqttClient.setCallback(::onReceived)
-            mqttClient.connect(arrayOf<String>(SUB_TOPIC))
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+//        mqttClient = Mqtt(context, SERVER_URI)
+//        try {
+//            // mqttClient.setCallback { topic, message ->}
+//            mqttClient.setCallback(::onReceived)
+//            mqttClient.connect(arrayOf<String>(SUB_TOPIC))
+//
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
 
         Log.d("create", "프래그먼트 실행")
         val DairyViewModel =
@@ -95,13 +96,36 @@ class DairyFragment : Fragment() {
 
             val post = Post(author, title, content)
             postservice.requestPost(post).enqueue(object: Callback<PostState> {
+
                 override fun onResponse(call: Call<PostState>, response: Response<PostState>) {
                     if(response.isSuccessful) {
-                        val result = response.body()
+                        var result = response.body()
+
                         Log.d("게시물", "${result?.code}")
                         Log.d("게시물", "${result?.msg}")
                         Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT).show()
-                        mqttClient.publish(DAIRY_TOPIC, "color,${content}")
+//                        mqttClient.publish(DAIRY_TOPIC, "color,${content}")
+                        Log.d("colorstate","${result?.color}")
+//                        Log.d("angry","${result?.angry}")
+
+                        Log.d("angry","${result?.angry}")
+                        Log.d("anticipation","${result?.anticipation}")
+                        Log.d("disgust","${result?.disgust}")
+
+                        binding.diaryPost.setText("")
+                        binding.diaryTitle.setText("")
+                        state = 2
+                        if (state == 2){
+                            state = 0
+                        }
+
+
+                        val bundle = bundleOf("colorstate" to "${result?.color}","angry" to "${result?.angry}",
+                            "anticipation" to "${result?.anticipation}","disgust" to "${result?.disgust}","joy" to "${result?.joy}"
+                            ,"fear" to "${result?.fear}","sadness" to "${result?.sadness}","trust" to "${result?.trust}"
+                            ,"surprise" to "${result?.surprise}")
+
+                        findNavController().navigate(R.id.dairyDetailFragment,bundle)
 
                     } else {
                         Log.d("게시물 등록 에러 ", response.errorBody()!!.string())
@@ -113,29 +137,8 @@ class DairyFragment : Fragment() {
                     Log.e("게시물 등록 실패", t.localizedMessage)
                     Toast.makeText(context, "게시물 등록 실패", Toast.LENGTH_SHORT).show()
                 }
-
-
-            }
-
-            )
-
-
-
-            binding.diaryPost.setText("")
-            binding.diaryTitle.setText("")
-            state = 2
-            if (state == 2){
-                state = 0
-            }
-
-            findNavController().navigate(R.id.dairyDetailFragment)
-
-
+            })
         }
-
-
-
-
 
             binding.micButton.setOnClickListener {
                 state += 1
@@ -153,10 +156,8 @@ class DairyFragment : Fragment() {
                 if (state == 2){
                     Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
                 }
-
-
-
             }
+
         binding.titleMicButton.setOnClickListener {
             state2 += 1
 
@@ -179,6 +180,7 @@ class DairyFragment : Fragment() {
         }
 
 
+
             return root
         }
 
@@ -187,18 +189,18 @@ class DairyFragment : Fragment() {
             _binding = null
             SpeechRecognizerManager.getInstance().finalizeLibrary()
         }
-        fun onReceived(topic: String?, message: MqttMessage) {
-            // 토픽 수신 처리
-            val msg = String(message.payload)
-            Log.i("Mqtt_result","수신메세지: $msg")
-            test_data = msg //문자열, 비트
-            arr = test_data.split(",")
-            Log.i("Mqtt_result", "수신] 데이터 값 : $test_data// $arr")
-            Log.i("Mqtt_result","수신메세지: "+ test_data)
-
-
-
-        }
+//        fun onReceived(topic: String?, message: MqttMessage) {
+//            // 토픽 수신 처리
+//            val msg = String(message.payload)
+//            Log.i("Mqtt_result","수신메세지: $msg")
+//            test_data = msg //문자열, 비트
+//            arr = test_data.split(",")
+//            Log.i("Mqtt_result", "수신] 데이터 값 : $test_data// $arr")
+//            Log.i("Mqtt_result","수신메세지: "+ test_data)
+//
+//
+//
+//        }
         private fun startUsingSpeechSDK() {
 
 
@@ -292,8 +294,6 @@ class DairyFragment : Fragment() {
                         client.cancelRecording()
                         client.startRecording(true)
                         Log.d("error", "loopstart")
-
-
                     }
                     if (state2 == 1) {
                         //음성인식 시작함
@@ -306,9 +306,11 @@ class DairyFragment : Fragment() {
                     if (state == 2) {
                         state = 0
                     }
+
                     if (state2 == 2) {
                         state = 0
                     }
+
 
 
                 }
@@ -343,19 +345,10 @@ class DairyFragment : Fragment() {
 
                     }
                     Log.d("Loop", "${state}")
-
-
                 }
             })
-
-
             client.startRecording(true)
-
-
         }
-
-
-
     }
 
 

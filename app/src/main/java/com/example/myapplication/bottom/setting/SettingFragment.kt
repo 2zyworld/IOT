@@ -24,17 +24,12 @@ class SettingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val SettingViewModel =
-            ViewModelProvider(this).get(SettingViewModel::class.java)
+
 
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
 
-//        val textView: TextView = binding.settings
-//        SettingViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         return root
     }
 

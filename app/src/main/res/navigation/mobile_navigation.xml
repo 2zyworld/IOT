@@ -34,6 +34,11 @@
             android:name="content"
             app:argType="string"
             android:defaultValue="0" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="0" />
+
     </fragment>
 
     <fragment
@@ -45,6 +50,18 @@
         <action
             android:id="@+id/action_dairyDetailFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_dairyDetailFragment_to_navigation_room"
+            app:destination="@id/navigation_room" />
+        <action
+            android:id="@+id/action_dairyDetailFragment_to_askHelpMainFragment"
+            app:destination="@id/askHelpMainFragment" />
+        <action
+            android:id="@+id/action_dairyDetailFragment_to_musicFragment"
+            app:destination="@id/musicFragment" />
+        <action
+            android:id="@+id/action_dairyDetailFragment_to_navigation_meditation"
+            app:destination="@id/navigation_meditation" />
     </fragment>
 
 
@@ -119,7 +136,15 @@
         android:id="@+id/navigation_meditation"
         android:name="com.example.myapplication.drawer.meditation.MeditationFragment"
         android:label="@string/title_meditation"
-        tools:layout="@layout/fragment_meditation" />
+        tools:layout="@layout/fragment_meditation" >
+        <argument
+            android:name="address"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_navigation_meditation_to_meditationviewFragment"
+            app:destination="@id/meditationviewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_room"
         android:name="com.example.myapplication.drawer.room.RoomFragment"
@@ -167,6 +192,9 @@
         <action
             android:id="@+id/action_lightFragment_to_navigation_room"
             app:destination="@id/navigation_room" />
+        <action
+            android:id="@+id/action_lightFragment_to_lightExplainFragment"
+            app:destination="@id/lightExplainFragment" />
     </fragment>
     <fragment
         android:id="@+id/askHelpMainFragment"
@@ -185,6 +213,23 @@
         android:id="@+id/askHelpTestFragment"
         android:name="com.example.myapplication.drawer.askhelp.AskHelpTestFragment"
         android:label="AskHelpTestFragment" />
+    <fragment
+        android:id="@+id/lightExplainFragment"
+        android:name="com.example.myapplication.drawer.room.LightExplainFragment"
+        android:label="fragment_light_explain"
+        tools:layout="@layout/fragment_light_explain" >
+        <action
+            android:id="@+id/action_lightExplainFragment_to_lightFragment"
+            app:destination="@id/lightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meditationviewFragment"
+        android:name="com.example.myapplication.drawer.meditation.MeditationviewFragment"
+        android:label="MeditationviewFragment" >
+        <action
+            android:id="@+id/action_meditationviewFragment_to_navigation_meditation"
+            app:destination="@id/navigation_meditation" />
+    </fragment>
 
 
 </navigation>

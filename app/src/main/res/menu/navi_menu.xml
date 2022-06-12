@@ -3,20 +3,30 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:id="@+id/navigation_mypage"
-            android:title = "@string/title_mypage"/>
+        <item
+            android:id="@+id/navigation_mypage"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="@string/title_mypage" />
 
-        <item android:id="@+id/askHelpMainFragment"
-            android:title = "@string/title_askhelp"/>
+        <item
+            android:id="@+id/askHelpMainFragment"
+            android:icon="@drawable/ic_baseline_filter_vintage_24"
+            android:title="@string/title_askhelp" />
 
-        <item android:id="@+id/musicFragment"
-            android:title = "@string/title_music"/>
+        <item
+            android:id="@+id/musicFragment"
+            android:icon="@drawable/ic_baseline_play_circle_24"
+            android:title="@string/title_music" />
 
-        <item android:id="@+id/meditationFragment"
-            android:title = "@string/title_meditation"/>
+        <item
+            android:id="@+id/navigation_meditation"
+            android:icon="@drawable/ic_baseline_self_improvement_24"
+            android:title="@string/title_meditation" />
 
-        <item android:id="@+id/navigation_room"
-            android:title = "@string/title_room"/>
+        <item
+            android:id="@+id/navigation_room"
+            android:icon="@drawable/ic_baseline_sentiment_very_satisfied_24"
+            android:title="@string/title_room" />
 
 
 

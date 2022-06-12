@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1D1D1"
+    android:background="#E8E8E8"
     tools:context=".bottom.graph.GraphFragment">
 
     <ScrollView
@@ -44,7 +44,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="50dp">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
 
                 </com.github.mikephil.charting.charts.PieChart>
             </androidx.cardview.widget.CardView>
@@ -73,7 +76,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="50dp">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
 
                 </com.github.mikephil.charting.charts.BarChart>
             </androidx.cardview.widget.CardView>

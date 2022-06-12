@@ -4,6 +4,8 @@ package com.example.myapplication.bottom.calender.dairy_history
 import com.google.gson.annotations.SerializedName
 
 data class dairyhistoryItem(
+    @SerializedName("id")
+    val id: Int? = null,
     @SerializedName("angry")
     val angry: Any? = null,
     @SerializedName("anticipation")

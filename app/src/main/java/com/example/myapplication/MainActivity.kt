@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.Manifest
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         setSupportActionBar(toolbarv)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val drawerLayout: DrawerLayout = binding.layoutDrawer
         val naviView: NavigationView = binding.naviView

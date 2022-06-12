@@ -11,7 +11,9 @@ import androidx.room.Update
 import com.example.myapplication.bottom.dairy.dairy_post.UserName
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentCalenderBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +32,7 @@ class CalenderFragment : Fragment() {
 
     private var _binding: FragmentCalenderBinding? = null
     private val binding get() = _binding!!
-
+    private var id:Int? = null
 
     interface historyService {
         @PUT("post/{id}/")
@@ -39,8 +41,9 @@ class CalenderFragment : Fragment() {
         fun delete(@Path("id") id: Int): Call<DataState?>
     }
         data class updateDate(
+
             val author: String,
-//            val title: String,
+            val title: String,
             val content: String,
         )
         data class DataState(
@@ -59,11 +62,12 @@ class CalenderFragment : Fragment() {
         val root: View = binding.root
 
         binding.historybox.apply {
-//            arguments?.getString("content")
             this.setText("${arguments?.getString("content")}")
-
         }
-
+        binding.historytitle.apply{
+            this.setText("${arguments?.getString("title")}")
+        }
+        id = arguments?.getInt("id")
 
 
             val retrofit = Retrofit.Builder()
@@ -76,22 +80,27 @@ class CalenderFragment : Fragment() {
 
             binding.modify.setOnClickListener {
 
-//                val title =binding.diarytitle.text.toString()
+                val title =binding.historytitle.text.toString()
                 val content = binding.historybox.text.toString()
-                val author = UserName.username
-                val Update = updateDate(content,author)
+                val author = "iot"
+                val Update = updateDate(author,title,content)
 
-                    service.update(id, Update) .enqueue(object : Callback<DataState> {
+                    service.update(id!!, Update) .enqueue(object : Callback<DataState> {
+
 
                             override fun onResponse(
                                 call: Call<DataState>,
                                 response: Response<DataState>
                             ) {
+                                Log.d("게시물에러","${Update}")
+                                Log.d("게시물에러","${id}")
+
+
                                 if (response.isSuccessful) {
                                     val result = response.body()
                                     Log.d("게시물", "${result?.code}")
                                     Log.d("게시물", "${result?.msg}")
-                                    Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT)
+                                    Toast.makeText(context, "수정 완료 되었습니다.", Toast.LENGTH_SHORT)
                                         .show()
 
                                 } else {
@@ -106,12 +115,14 @@ class CalenderFragment : Fragment() {
                             }
                         }
                         )
+
+                 findNavController().navigate(R.id.dairyListFragment)
                 }
 
 
                 binding.delete.setOnClickListener {
 
-                        service.delete(id).enqueue(object: Callback<DataState?> {
+                        service.delete(id!!).enqueue(object: Callback<DataState?> {
                             override fun onResponse(
                                 call: Call<DataState?>,
                                 response: Response<DataState?>
@@ -120,7 +131,7 @@ class CalenderFragment : Fragment() {
                                     val result = response.body()
                                     Log.d("게시물", "${result?.code}")
                                     Log.d("게시물", "${result?.msg}")
-                                    Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, "삭제 완료 되었습니다.", Toast.LENGTH_SHORT).show()
 
                                 } else {
                                     Log.d("게시물 등록 에러 ", response.errorBody()!!.string())
@@ -133,6 +144,7 @@ class CalenderFragment : Fragment() {
                                 }
                          }
                        )
+                    findNavController().navigate(R.id.dairyListFragment)
                     }
 
             return root

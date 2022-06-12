@@ -4,21 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAskhelpBinding
-import com.example.myapplication.databinding.FragmentMusicBinding
 import com.example.myapplication.drawer.askhelp.datas.Document
-import com.example.myapplication.drawer.askhelp.datas.askhelpdata
-import com.example.myapplication.drawer.meditation.data.data
-import com.example.myapplication.drawer.music.MusicViewModel
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 
 class AskHelpFragment : Fragment() {
 
