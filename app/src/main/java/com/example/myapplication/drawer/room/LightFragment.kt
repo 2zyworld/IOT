@@ -17,7 +17,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 
 private const val SUB_TOPIC = "Android" //받아오기
 private const val LIGTH_TOPIC = "Iot/light"
-private const val SERVER_URI = "tcp://172.30.1.2"
+private const val SERVER_URI = "tcp://172.30.1.52"
 
 var test_data = ""
 
