@@ -82,7 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:visibility="visible">
+            android:visibility="gone">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,70 +92,18 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/angryN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
 
-                <TextView
-                    android:id="@+id/anticipateN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
+                </com.github.mikephil.charting.charts.PieChart>
 
-                <TextView
-                    android:id="@+id/joyN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/fearN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/disgustN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/sadnessN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/surpriseN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/trustN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="TextView" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
