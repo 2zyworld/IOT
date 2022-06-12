@@ -46,7 +46,7 @@ class DairyFragment : Fragment() {
     private val binding get() = _binding!!
     var add_text: String = ""
     var state: Int = 0
-    var index: Int = 0
+    var state2: Int = 0
 
     lateinit var mqttClient: Mqtt
     lateinit var msg : String
@@ -157,6 +157,30 @@ class DairyFragment : Fragment() {
                     Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
                 }
             }
+
+        binding.titleMicButton.setOnClickListener {
+            state2 += 1
+
+            Log.d("state", "${state2}")
+
+
+            if (state2 == 1) {
+                Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT).show()
+                SpeechRecognizerManager.getInstance().initializeLibrary(context)
+                startUsingSpeechSDK()
+
+
+            }
+            if (state2 == 2){
+                Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
+            }
+
+
+
+        }
+
+
+
             return root
         }
 
@@ -214,6 +238,12 @@ class DairyFragment : Fragment() {
                         state = 0
 
                     }
+                    if (state2 == 2) {
+                        client.cancelRecording()
+
+                        state2 = 0
+
+                    }
 
                 }
 
@@ -229,9 +259,21 @@ class DairyFragment : Fragment() {
 
                     Log.d("", texts?.get(0).toString())
                     Log.d("addtext", add_text)
+                    if(state == 1) {
+                        binding.diaryPost.getText()
+                            .insert(
+                                binding.diaryPost.getSelectionStart(),
+                                "${texts?.get(0).toString()} "
+                            )
+                    }
 
-                    binding.diaryPost.getText()
-                        .insert(binding.diaryPost.getSelectionStart(), "${texts?.get(0).toString()} ");
+                    if(state2 == 1) {
+                        binding.diaryTitle.getText()
+                            .insert(
+                                binding.diaryTitle.getSelectionStart(),
+                                "${texts?.get(0).toString()} "
+                            )
+                    }
 
 
                     //정확도가 높은 첫번째 결과값을 텍스트뷰에 출력
@@ -253,9 +295,24 @@ class DairyFragment : Fragment() {
                         client.startRecording(true)
                         Log.d("error", "loopstart")
                     }
+                    if (state2 == 1) {
+                        //음성인식 시작함
+                        client.cancelRecording()
+                        client.startRecording(true)
+                        Log.d("error", "loopstart")
+
+
+                    }
                     if (state == 2) {
                         state = 0
                     }
+
+                    if (state2 == 2) {
+                        state = 0
+                    }
+
+
+
                 }
 
                 override fun onFinished() {
@@ -272,6 +329,19 @@ class DairyFragment : Fragment() {
                     }
                     if (state == 2) {
                         state = 0
+
+                    }
+
+                    if (state2 == 1) {
+                        //음성인식 시작함
+                        client.cancelRecording()
+                        client.startRecording(true)
+                        Log.d("Loop", "start,${state2}")
+
+
+                    }
+                    if (state2 == 2) {
+                        state2 = 0
 
                     }
                     Log.d("Loop", "${state}")

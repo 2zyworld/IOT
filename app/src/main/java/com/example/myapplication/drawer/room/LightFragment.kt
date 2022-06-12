@@ -90,18 +90,27 @@ class LightFragment : Fragment() {
             Log.i("Mqtt_result", "Light Setting Success")
             Toast.makeText(context,"Light Setting Success", Toast.LENGTH_SHORT).show()
         }
-        binding.switch1.isChecked = true
+
+        binding.switch1.isChecked == false
+        if(binding.switch1.isChecked == false){
+            binding.switch1.isChecked  = false
+            binding.pickColorButton.setEnabled(false);
+            binding.setColorButton.setEnabled(false);
+
+        }
+
         binding.switch1.setOnCheckedChangeListener{ compoundButton, b ->
             if(b){
                 binding.switch1.isChecked = true
                 binding.pickColorButton.setEnabled(true);
                 binding.setColorButton.setEnabled(true);
+                mqttClient.publish(LIGTH_TOPIC, "init,android_mood,#ffffff,on")
             }
             else{
                 binding.switch1.isChecked  = false
                 binding.pickColorButton.setEnabled(false);
                 binding.setColorButton.setEnabled(false);
-                mqttClient.publish(LIGTH_TOPIC, "init,android_mood,#fffffff,off")
+                mqttClient.publish(LIGTH_TOPIC, "init,android_mood,#ffffff,off")
             }
 
             }
