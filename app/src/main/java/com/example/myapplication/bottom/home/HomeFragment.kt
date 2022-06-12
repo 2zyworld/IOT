@@ -47,8 +47,7 @@ class HomeFragment : Fragment() {
 
         calendarView.minDate = SimpleDateFormat("yyyyMMdd").parse("20220101").time
         calendarView.maxDate = SimpleDateFormat("yyyyMMDD").parse("21001231").time
-//
-//
+
 //        day.text = ""+calendarView.date
 //        calendarView.setOnDateChangeListener{ view, year, month, dayOfMonth ->
 //            if(month<9){

@@ -14,7 +14,7 @@ import com.example.myapplication.R
 import com.example.myapplication.bottom.calender.dairy_history.dairyhistoryItem
 import com.example.myapplication.bottom.dairy.DairyViewModel
 import com.example.myapplication.databinding.FragmentDairyListBinding
-import com.example.myapplication.drawer.askhelp.datas.Document
+
 
 
 class DairyListFragment : Fragment() {
@@ -53,10 +53,13 @@ class DairyListFragment : Fragment() {
 private fun DairyListFragmentDirections(dairyItem: dairyhistoryItem){
 
     val bundle = bundleOf("content" to dairyItem.content,"title" to dairyItem.title,"id" to dairyItem.id)
+     Log.d("color", "${dairyItem.color}")
 
     findNavController().navigate(R.id.navigation_calender,bundle)
 
+
 }
+
 
 
     override fun onDestroyView() {

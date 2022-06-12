@@ -19,7 +19,7 @@ interface GraphService {
 
 object GraphData {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://http://3.0.128.249:8002/")
+        .baseUrl("http://3.0.128.249:8000/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

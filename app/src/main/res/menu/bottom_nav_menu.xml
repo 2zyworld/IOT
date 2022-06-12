@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_baseline_home_24"
         android:enabled="true"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/dairyListFragment"
-        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:icon="@drawable/ic_baseline_perm_contact_calendar_24"
         android:enabled="true"
         android:title="@string/title_calender" />
 
@@ -21,7 +21,7 @@
         android:title="@string/title_dairy" />
     <item
         android:id="@+id/navigation_graph"
-        android:icon="@android:drawable/ic_menu_today"
+        android:icon="@drawable/ic_baseline_auto_graph_24"
         android:enabled="true"
         android:title="@string/title_graph" />
     <item

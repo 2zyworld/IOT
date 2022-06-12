@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context=".drawer.room.LightFragment"
-tools:ignore="HardcodedText">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E8E8"
+    android:orientation="vertical"
+    tools:context=".drawer.room.LightFragment"
+    tools:ignore="HardcodedText">
 
-<!--Give all widgets, the proper id to
+    <!--Give all widgets, the proper id to
     handle them in MainActivity.java-->
 
-<!--GeeksforGeeks Text-->
+    <!--GeeksforGeeks Text-->
     <Switch
         android:id="@+id/switch1"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@ tools:ignore="HardcodedText">
         android:textSize="42sp"
         android:textStyle="bold" />
 
-<!--Pick color Button-->
+    <!--Pick color Button-->
     <Button
         android:id="@+id/pick_color_button"
         android:layout_width="match_parent"
@@ -44,28 +44,28 @@ tools:ignore="HardcodedText">
         android:text="Pick Color"
         app:rippleColor="#FFFFFF" />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginTop="32dp"
-    android:textSize="18sp"
-    android:text="Your picked color is:" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:text="Your picked color is:"
+        android:textSize="18sp" />
 
-<!--sample view to preview selected color by user-->
-<!--by default this has been set to darker gery-->
-<!--this can be overridden after user chose the
+    <!--sample view to preview selected color by user-->
+    <!--by default this has been set to darker gery-->
+    <!--this can be overridden after user chose the
     color from color picker-->
-<!--which has been handled in the MainActivity.java-->
-<View
-    android:id="@+id/preview_selected_color"
-    android:layout_width="48dp"
-    android:layout_height="48dp"
-    android:layout_gravity="center"
-    android:background="@android:color/darker_gray"
-    android:layout_marginTop="8dp" />
+    <!--which has been handled in the MainActivity.java-->
+    <View
+        android:id="@+id/preview_selected_color"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray" />
 
-<!--set color button to overwrite the
+    <!--set color button to overwrite the
     color for GeeksforGeeks text-->
     <Button
         android:id="@+id/set_color_button"
