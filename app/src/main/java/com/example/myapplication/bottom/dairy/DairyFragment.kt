@@ -36,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private const val SUB_TOPIC = "Android" //받아오기
 private const val DAIRY_TOPIC = "data/light"
-private const val SERVER_URI = "tcp://172.30.1.2"
+private const val SERVER_URI = "tcp://172.30.1.52"
 
 class DairyFragment : Fragment() {
 
@@ -44,6 +44,7 @@ class DairyFragment : Fragment() {
 
 
     private val binding get() = _binding!!
+    private var toast: Toast? = null
     var add_text: String = ""
     var state: Int = 0
     var state2: Int = 0
@@ -62,15 +63,15 @@ class DairyFragment : Fragment() {
     ): View {
 
 
-//        mqttClient = Mqtt(context, SERVER_URI)
-//        try {
-//            // mqttClient.setCallback { topic, message ->}
-//            mqttClient.setCallback(::onReceived)
-//            mqttClient.connect(arrayOf<String>(SUB_TOPIC))
-//
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
+        mqttClient = Mqtt(context, SERVER_URI)
+        try {
+            // mqttClient.setCallback { topic, message ->}
+            mqttClient.setCallback(::onReceived)
+            mqttClient.connect(arrayOf<String>(SUB_TOPIC))
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         Log.d("create", "프래그먼트 실행")
         val DairyViewModel =
@@ -103,20 +104,23 @@ class DairyFragment : Fragment() {
 
                         Log.d("게시물", "${result?.code}")
                         Log.d("게시물", "${result?.msg}")
-                        Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT).show()
+                        toast?.cancel()
+                        toast = Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT)
+                        toast?.show()
 //                        mqttClient.publish(DAIRY_TOPIC, "color,${content}")
                         Log.d("colorstate","${result?.color}")
-//                        Log.d("angry","${result?.angry}")
 
-                        Log.d("angry","${result?.angry}")
-                        Log.d("anticipation","${result?.anticipation}")
-                        Log.d("disgust","${result?.disgust}")
+
 
                         binding.diaryPost.setText("")
                         binding.diaryTitle.setText("")
                         state = 2
                         if (state == 2){
                             state = 0
+                        }
+                        state2 = 2
+                        if (state2 == 2){
+                            state2 = 0
                         }
 
 
@@ -129,13 +133,17 @@ class DairyFragment : Fragment() {
 
                     } else {
                         Log.d("게시물 등록 에러 ", response.errorBody()!!.string())
-                        Toast.makeText(context, "게시물 등록 에러", Toast.LENGTH_SHORT).show()
+                        toast?.cancel()
+                        toast = Toast.makeText(context, "게시물 등록 에러", Toast.LENGTH_SHORT)
+                        toast?.show()
                     }
                 }
 
                 override fun onFailure(call: Call<PostState>, t: Throwable) {
                     Log.e("게시물 등록 실패", t.localizedMessage)
-                    Toast.makeText(context, "게시물 등록 실패", Toast.LENGTH_SHORT).show()
+                    toast?.cancel()
+                    toast = Toast.makeText(context, "게시물 등록 실패", Toast.LENGTH_SHORT)
+                    toast?.show()
                 }
             })
         }
@@ -147,14 +155,24 @@ class DairyFragment : Fragment() {
 
 
                 if (state == 1) {
-                    Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT).show()
+                    toast?.cancel()
+                    toast = Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT)
+                    toast?.show()
                     SpeechRecognizerManager.getInstance().initializeLibrary(context)
                     startUsingSpeechSDK()
 
 
                 }
                 if (state == 2){
-                    Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
+                    toast?.cancel()
+                    toast = Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_LONG)
+                    toast ?.show()
+
+
+
+
+
+
                 }
             }
 
@@ -165,15 +183,24 @@ class DairyFragment : Fragment() {
 
 
             if (state2 == 1) {
-                Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT).show()
+                toast?.cancel()
+                toast = Toast.makeText(context, "음성인식을 시작합니다.", Toast.LENGTH_SHORT)
+                toast?.show()
                 SpeechRecognizerManager.getInstance().initializeLibrary(context)
                 startUsingSpeechSDK()
 
 
             }
             if (state2 == 2){
-                Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_SHORT).show()
+
+                toast?.cancel()
+                toast = Toast.makeText(context, "음성인식을 종료합니다.", Toast.LENGTH_LONG)
+                toast ?.show()
+
+
+
             }
+
 
 
 
@@ -189,18 +216,18 @@ class DairyFragment : Fragment() {
             _binding = null
             SpeechRecognizerManager.getInstance().finalizeLibrary()
         }
-//        fun onReceived(topic: String?, message: MqttMessage) {
-//            // 토픽 수신 처리
-//            val msg = String(message.payload)
-//            Log.i("Mqtt_result","수신메세지: $msg")
-//            test_data = msg //문자열, 비트
-//            arr = test_data.split(",")
-//            Log.i("Mqtt_result", "수신] 데이터 값 : $test_data// $arr")
-//            Log.i("Mqtt_result","수신메세지: "+ test_data)
-//
-//
-//
-//        }
+        fun onReceived(topic: String?, message: MqttMessage) {
+            // 토픽 수신 처리
+            val msg = String(message.payload)
+            Log.i("Mqtt_result","수신메세지: $msg")
+            test_data = msg //문자열, 비트
+            arr = test_data.split(",")
+            Log.i("Mqtt_result", "수신] 데이터 값 : $test_data// $arr")
+            Log.i("Mqtt_result","수신메세지: "+ test_data)
+
+
+
+        }
         private fun startUsingSpeechSDK() {
 
 
@@ -308,7 +335,7 @@ class DairyFragment : Fragment() {
                     }
 
                     if (state2 == 2) {
-                        state = 0
+                        state2 = 0
                     }
 
 
