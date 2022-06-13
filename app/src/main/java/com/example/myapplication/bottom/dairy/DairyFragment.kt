@@ -107,7 +107,7 @@ class DairyFragment : Fragment() {
                         toast?.cancel()
                         toast = Toast.makeText(context, "${result?.msg}", Toast.LENGTH_SHORT)
                         toast?.show()
-//                        mqttClient.publish(DAIRY_TOPIC, "color,${content}")
+                        mqttClient.publish(DAIRY_TOPIC, "color,${content}")
                         Log.d("colorstate","${result?.color}")
 
 
